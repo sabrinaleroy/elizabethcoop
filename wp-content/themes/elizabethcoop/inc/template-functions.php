@@ -35,3 +35,14 @@ function elizabethcoop_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'elizabethcoop_pingback_header' );
+
+
+
+
+function elizabethcoop_custom_setup() {
+	
+	/**** adding rectangle size for two columns display ****/
+	add_image_size( 'rectangle', 570 , 450 , true );
+	
+}
+add_action( 'after_setup_theme', 'elizabethcoop_custom_setup' );

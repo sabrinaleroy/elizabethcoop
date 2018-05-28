@@ -1,6 +1,12 @@
 // @import "../layout/content-sidebar";
 // @import "../layout/sidebar-content";
 
+
+/*--------------------------------------------------------------
+## Header
+--------------------------------------------------------------*/
+@import "header/header";
+
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
@@ -10,3 +16,11 @@
 ## Comments
 --------------------------------------------------------------*/
 @import "primary/comments";
+
+
+.site-container{
+	margin: 0 auto;
+	max-width: $size__site-container;
+	width: 98%;
+	position: relative;
+}

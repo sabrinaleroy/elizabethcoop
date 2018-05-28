@@ -25,34 +25,48 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'elizabethcoop' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+		<div class="site-container">
+			<div class="site-branding">
 				<?php
-			else :
+				$title_tag = "p";
+				if ( is_front_page() && is_home() ){
+					$title_tag = "h1";	
+				}
+					
+				if(get_custom_logo()){
+					?>
+					<<?php echo $title_tag ?> class="site-title">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<?php the_custom_logo(); ?>
+						</a>
+					</<?php echo $title_tag ?>>
+					<?php
+				}else{
+					
+					$elizabethcoop_title = get_bloginfo( 'name', 'display' );
+					$elizabethcoop_title_tab = explode(" ", $elizabethcoop_title);
+					?>
+					<<?php echo $title_tag ?> class="site-title">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo $elizabethcoop_title_tab[0]; ?>
+							<span><?php echo $elizabethcoop_title_tab[1]; ?></span>
+						</a>
+					</<?php echo $title_tag ?>>
+					<?php
+				}
+				
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+			</div><!-- .site-branding -->
+	
+			<nav id="site-navigation" class="main-navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'elizabethcoop' ); ?></button>
 				<?php
-			endif;
-			$elizabethcoop_description = get_bloginfo( 'description', 'display' );
-			if ( $elizabethcoop_description || is_customize_preview() ) :
+				wp_nav_menu( array(
+					'theme_location' => 'menu-1',
+					'menu_id'        => 'primary-menu',
+				) );
 				?>
-				<p class="site-description"><?php echo $elizabethcoop_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'elizabethcoop' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+			</nav><!-- #site-navigation -->
+		</div>
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<div id="content" class="site-content site-container">

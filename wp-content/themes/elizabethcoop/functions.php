@@ -41,6 +41,9 @@ if ( ! function_exists( 'elizabethcoop_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		
+		
+		
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -59,12 +62,6 @@ if ( ! function_exists( 'elizabethcoop_setup' ) ) :
 			'caption',
 		) );
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'elizabethcoop_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
-
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
@@ -79,6 +76,8 @@ if ( ! function_exists( 'elizabethcoop_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+		
+		
 	}
 endif;
 add_action( 'after_setup_theme', 'elizabethcoop_setup' );
@@ -120,9 +119,18 @@ add_action( 'widgets_init', 'elizabethcoop_widgets_init' );
  * Enqueue scripts and styles.
  */
 function elizabethcoop_scripts() {
+	
+	wp_enqueue_style( 'elizabethcoop-font', 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:600,700' );
+	wp_enqueue_style( 'elizabethcoop-font', 'https://fonts.googleapis.com/css?family=Lato:300,400,700' );
 	wp_enqueue_style( 'elizabethcoop-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'elizabethcoop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	
+	wp_enqueue_script( 'elizabethcoop-jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), '20151215', true );
+	wp_enqueue_script( 'elizabethcoop-navigation', get_template_directory_uri() . '/js/navigation.js', array('elizabethcoop-jquery'), '20151215', true );
+	
+	
+	wp_enqueue_style( 'elizabethcoop-slick', get_template_directory_uri() . '/vendor/slick/slick.css');
+	wp_enqueue_script( 'elizabethcoop-slick', get_template_directory_uri() . '/vendor/slick/slick.min.js',  array('elizabethcoop-jquery'), '20151215', true );
+	
 
 	wp_enqueue_script( 'elizabethcoop-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -132,10 +140,6 @@ function elizabethcoop_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'elizabethcoop_scripts' );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -143,7 +147,7 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Functions which enhance the theme by hooking into WordPress.
+ * Functions which enhance the theme by hooking into WordPress. Edited by Sabrina
  */
 require get_template_directory() . '/inc/template-functions.php';
 
