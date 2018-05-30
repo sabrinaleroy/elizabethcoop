@@ -1,0 +1,274 @@
+{
+    "key": "group_5b0c418240ec8",
+    "title": "Slick Slider Widget",
+    "fields": [
+        {
+            "key": "field_5b0c46ffed13b",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "if empty, no title will show",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5b0c419cdc0ff",
+            "label": "How do I fill this Up?",
+            "name": "how_do_i_fill_this_up",
+            "type": "select",
+            "instructions": "Please select a way of filling this slider up.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "manually": "Choose Posts Manually",
+                "mostviewed": "Most Viewed Posts",
+                "category": "The last Posts of a given Category",
+                "tag": "The last Posts of a given Tag"
+            },
+            "default_value": [
+                "manually"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b0c42d9dc100",
+            "label": "Choose the Posts manually:",
+            "name": "choose_the_posts_manually:",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "manually"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
+            "key": "field_5b0c4330dc101",
+            "label": "How many Posts to show?",
+            "name": "how_many_posts",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "mostviewed"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 4,
+            "placeholder": 4,
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": "",
+            "step": 1
+        },
+        {
+            "key": "field_5b0c4378dc105",
+            "label": "How many days should I use to calculate the TOP?",
+            "name": "how_many_days_should_i_use_to_calculate_the_top",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "mostviewed"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 30,
+            "placeholder": 30,
+            "prepend": "",
+            "append": "",
+            "min": 7,
+            "max": 365,
+            "step": 1
+        },
+        {
+            "key": "field_5b0c43f0dc106",
+            "label": "Which Category?",
+            "name": "which_category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "category",
+            "field_type": "radio",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5b0c4422dc107",
+            "label": "Which Tag?",
+            "name": "which_tags",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "post_tag",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5b0c452767782",
+            "label": "Should I show a \"View all\" link?",
+            "name": "should_i_show_a_view_all_link",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "yes": "YES",
+                "no": "NO"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "aslickslider"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1527531632
+}

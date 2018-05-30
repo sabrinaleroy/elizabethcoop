@@ -104,8 +104,18 @@ add_action( 'after_setup_theme', 'elizabethcoop_content_width', 0 );
  */
 function elizabethcoop_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'elizabethcoop' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Coloured Homepage Section', 'elizabethcoop' ),
+		'id'            => 'coloured-homepage-section',
+		'description'   => esc_html__( 'Add widgets here.', 'elizabethcoop' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	
+	register_sidebar( array(
+		'name'          => esc_html__( 'White Homepage Section', 'elizabethcoop' ),
+		'id'            => 'white-homepage-section',
 		'description'   => esc_html__( 'Add widgets here.', 'elizabethcoop' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
@@ -163,3 +173,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Widgets additions.
+ */
+require get_template_directory() . '/inc/widgets-functions.php';
