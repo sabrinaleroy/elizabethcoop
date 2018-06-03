@@ -137,10 +137,6 @@ function elizabethcoop_scripts() {
 	wp_enqueue_script( 'elizabethcoop-jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), '20151215', true );
 	wp_enqueue_script( 'elizabethcoop-navigation', get_template_directory_uri() . '/js/navigation.js', array('elizabethcoop-jquery'), '20151215', true );
 	
-	
-	wp_enqueue_style( 'elizabethcoop-slick', get_template_directory_uri() . '/vendor/slick/slick.css');
-	wp_enqueue_script( 'elizabethcoop-slick', get_template_directory_uri() . '/vendor/slick/slick.min.js',  array('elizabethcoop-jquery'), '20151215', true );
-	
 
 	wp_enqueue_script( 'elizabethcoop-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 

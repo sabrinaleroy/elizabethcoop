@@ -13,11 +13,14 @@
  */
 
 get_header();
-?>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+dynamic_sidebar("coloured-homepage-section");
 
+?>
+	<div id="primary" class="content-area site-container">
+		<main id="main" class="site-main">
 		<?php
+			
+			get_sidebar("white-homepage-section");
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
@@ -54,6 +57,5 @@ get_header();
 	</div><!-- #primary -->
 
 <?php
-get_sidebar("coloured-homepage-section");
-get_sidebar("white-homepage-section");
+
 get_footer();

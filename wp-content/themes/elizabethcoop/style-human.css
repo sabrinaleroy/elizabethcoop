@@ -533,6 +533,20 @@ table {
   width: 100%;
 }
 
+.slider {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.slider .post {
+  text-align: center;
+}
+.slider .slick-track {
+  overflow: visible;
+}
+.slider .slick-slide img {
+  margin: 0 auto;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/

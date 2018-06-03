@@ -36,6 +36,7 @@
             },
             "choices": {
                 "manually": "Choose Posts Manually",
+                "recent": "Most Recent Posts",
                 "mostviewed": "Most Viewed Posts",
                 "category": "The last Posts of a given Category",
                 "tag": "The last Posts of a given Tag"
@@ -52,8 +53,8 @@
         },
         {
             "key": "field_5b0c42d9dc100",
-            "label": "Choose the Posts manually:",
-            "name": "choose_the_posts_manually:",
+            "label": "Choose the Posts manually",
+            "name": "choose_the_posts_manually",
             "type": "post_object",
             "instructions": "",
             "required": 0,
@@ -77,7 +78,7 @@
             "taxonomy": [],
             "allow_null": 0,
             "multiple": 1,
-            "return_format": "object",
+            "return_format": "id",
             "ui": 1
         },
         {
@@ -108,6 +109,13 @@
                         "operator": "==",
                         "value": "tag"
                     }
+                ],
+                [
+                    {
+                        "field": "field_5b0c419cdc0ff",
+                        "operator": "==",
+                        "value": "recent"
+                    }
                 ]
             ],
             "wrapper": {
@@ -125,9 +133,9 @@
         },
         {
             "key": "field_5b0c4378dc105",
-            "label": "How many days should I use to calculate the TOP?",
-            "name": "how_many_days_should_i_use_to_calculate_the_top",
-            "type": "number",
+            "label": "Time Range",
+            "name": "how_many_days",
+            "type": "select",
             "instructions": "",
             "required": 0,
             "conditional_logic": [
@@ -144,13 +152,21 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": 30,
-            "placeholder": 30,
-            "prepend": "",
-            "append": "",
-            "min": 7,
-            "max": 365,
-            "step": 1
+            "choices": {
+                "last24hours": "Last 24 Hours",
+                "last7days": "Last 7 Days",
+                "last30days": "Last 30 Days",
+                "all": "All Time"
+            },
+            "default_value": [
+                "last30days"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
         },
         {
             "key": "field_5b0c43f0dc106",
@@ -174,18 +190,18 @@
                 "id": ""
             },
             "taxonomy": "category",
-            "field_type": "radio",
+            "field_type": "select",
             "allow_null": 0,
             "add_term": 0,
             "save_terms": 0,
-            "load_terms": 1,
-            "return_format": "object",
+            "load_terms": 0,
+            "return_format": "id",
             "multiple": 0
         },
         {
             "key": "field_5b0c4422dc107",
             "label": "Which Tag?",
-            "name": "which_tags",
+            "name": "which_tag",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
@@ -208,8 +224,8 @@
             "allow_null": 0,
             "add_term": 0,
             "save_terms": 0,
-            "load_terms": 1,
-            "return_format": "object",
+            "load_terms": 0,
+            "return_format": "id",
             "multiple": 0
         },
         {
@@ -270,5 +286,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1527531632
+    "modified": 1528057345
 }

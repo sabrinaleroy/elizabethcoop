@@ -69,4 +69,4 @@
 		</div>
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content site-container">
+	<div id="content" class="site-content">
