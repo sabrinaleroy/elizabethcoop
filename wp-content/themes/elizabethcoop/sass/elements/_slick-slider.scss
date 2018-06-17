@@ -238,6 +238,8 @@
 		border: 0;
 		font-size: 18px;
 		font-weight: 700;
+		z-index: 3;
+		cursor: pointer;
 		&::after{
 			content: "";
 		    width: 80px;

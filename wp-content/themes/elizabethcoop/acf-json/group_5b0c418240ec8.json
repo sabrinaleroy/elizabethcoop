@@ -1,6 +1,6 @@
 {
     "key": "group_5b0c418240ec8",
-    "title": "Slick Slider Widget",
+    "title": "Lists Widget",
     "fields": [
         {
             "key": "field_5b0c46ffed13b",
@@ -276,6 +276,13 @@
                 "operator": "==",
                 "value": "aslickslider"
             }
+        ],
+        [
+            {
+                "param": "widget",
+                "operator": "==",
+                "value": "apostslist"
+            }
         ]
     ],
     "menu_order": 0,
@@ -286,5 +293,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1528057345
+    "modified": 1529244008
 }

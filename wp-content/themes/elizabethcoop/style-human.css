@@ -769,6 +769,8 @@ table {
   border: 0;
   font-size: 18px;
   font-weight: 700;
+  z-index: 3;
+  cursor: pointer;
 }
 .slider .slick-arrow::after {
   content: "";
@@ -847,6 +849,65 @@ table {
   .slider .slick-slide.slick-prev .post .entry-meta .thumbnail-container a img {
     transform: translate(0) scale(0.8);
   }
+}
+
+.grid-list .post {
+  float: left;
+}
+.grid-list .post.title_hover .meta-container {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  top: -80px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.grid-list .post.title_hover .meta-container .entry-title {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+}
+.grid-list .post.title_hover .meta-container .entry-title a {
+  text-decoration: none;
+}
+.grid-list .post.title_hover .meta-container p {
+  font-size: 14px;
+}
+.grid-list .post.title_hover .meta-container .read-more {
+  transition: all 0.5s ease-in-out;
+  font-weight: 700;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-decoration: none;
+  padding: 20px 65px 20px 0;
+  font-size: 14px;
+  text-align: center;
+  background-image: url(./images/arrow.png);
+  background-repeat: no-repeat;
+  background-position: right 30px center;
+}
+.grid-list.grid-2 .post {
+  width: 48.75%;
+  margin: 0 2.5% 40px 0;
+}
+.grid-list.grid-2 .post:nth-child(2n) {
+  margin: 0 0 40px 0;
+}
+.grid-list.grid-2 .post.title_hover .meta-container {
+  top: -100px;
+}
+.grid-list.grid-2 .post.title_hover .meta-container .entry-title {
+  font-size: 37px;
+  line-height: 40px;
+}
+.grid-list.grid-3 .post {
+  width: 31.667%;
+  margin: 0 2.5% 40px 0;
+}
+.grid-list.grid-3 .post:nth-child(3n) {
+  margin: 0 0 40px 0;
 }
 
 /*--------------------------------------------------------------
@@ -1164,12 +1225,65 @@ a:hover, a:active {
   overflow: hidden;
 }
 
-.widget {
-  margin: 0 0 1.5em;
+.white-homepage-section {
+  width: 100%;
+  overflow: hidden;
+}
+.white-homepage-section .widget {
+  margin: 100px 0 0 0;
   /* Make sure select elements fit in widgets. */
 }
-.widget select {
+.white-homepage-section .widget select {
   max-width: 100%;
+}
+.white-homepage-section .widget .widget_header {
+  margin: 0 0 70px 0;
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.white-homepage-section .widget .widget_header .widget_title_container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.white-homepage-section .widget .widget_header .widget_title_container h2 {
+  display: inline-block;
+  padding: 0 30px 0 0;
+  white-space: nowrap;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-size: 22px;
+  line-height: 29px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.white-homepage-section .widget .widget_header .black_line_container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 29px;
+}
+.white-homepage-section .widget .widget_header .black_line_container .black_line {
+  height: 6px;
+  width: 100%;
+  background-color: #000000;
+}
+.white-homepage-section .widget .widget_header .view_all {
+  width: 185px;
+  position: absolute;
+  right: 0;
+  top: 4px;
+  padding: 0 0 0 30px;
+  background-image: url(./images/arrow.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: #ffffff;
+}
+.white-homepage-section .widget .widget_header .view_all a {
+  text-decoration: none;
 }
 
 /*--------------------------------------------------------------

@@ -43,6 +43,7 @@ function elizabethcoop_custom_setup() {
 	
 	/**** adding rectangle size for two columns display ****/
 	add_image_size( 'rectangle', 570 , 450 , true );
+	/**** adding size for Slider ****/
 	add_image_size( 'slider', 670 , 900 , true );
 	
 }

@@ -1,0 +1,73 @@
+.grid-list{
+	.post{
+		float: left;
+		&.title_hover{
+			.meta-container{
+				width: 90%;
+				margin: 0 auto;
+				position: relative;
+				top: -80px;
+				background-color: $color__background-body;
+				box-sizing: border-box;
+				padding: 20px;
+				.entry-title{
+					font-size: 22px;
+					font-weight: 400;
+					margin: 0 0 15px 0;
+					a{
+						text-decoration: none;
+					}
+				}
+				p{
+					font-size: 14px;
+				}
+				.read-more{
+					@include transition(0.5s);
+					font-weight: 700;
+					display: inline-block;
+					text-transform: uppercase;
+					letter-spacing: 3px;
+					text-decoration: none;
+					padding: 20px 65px 20px 0;
+					font-size: 14px;
+					text-align: center;
+					background-image: url(./images/arrow.png);
+					background-repeat: no-repeat;
+					background-position: right 30px center; 
+				}
+				
+			}
+		}
+	}
+	&.grid-2{
+		.post{
+			width: 48.75%;
+			margin: 0 2.5% 40px 0;
+			&:nth-child(2n){
+				margin: 0 0 40px 0;
+			}
+			&.title_hover{
+				.meta-container{
+					top : -100px;
+					.entry-title{
+						font-size: 37px;
+						line-height: 40px;
+						a{
+						}
+					}
+				}
+			}
+		}
+	}
+	&.grid-3{
+		.post{
+			width: 31.667%;
+			margin: 0 2.5% 40px 0;
+			&:nth-child(3n){
+				margin: 0 0 40px 0;
+			}
+			
+		}
+	}
+	
+}
