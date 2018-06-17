@@ -118,7 +118,7 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 	 * Wraps the post thumbnail in an anchor element on index views, or a div
 	 * element when on single views.
 	 */
-	function elizabethcoop_post_thumbnail() {
+	function elizabethcoop_post_thumbnail($size = 'thumbnail') {
 		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 			return;
 		}
@@ -127,14 +127,14 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 			?>
 
 			<div class="post-thumbnail">
-				<?php the_post_thumbnail('thumbnail'); ?>
+				<?php the_post_thumbnail($size); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 			<?php
-			the_post_thumbnail( 'thumbnail', array(
+			the_post_thumbnail($size, array(
 				'alt' => the_title_attribute( array(
 					'echo' => false,
 				) ),

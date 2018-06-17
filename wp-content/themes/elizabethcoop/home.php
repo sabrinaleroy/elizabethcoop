@@ -13,7 +13,12 @@
  */
 
 get_header();
-dynamic_sidebar("coloured-homepage-section");
+if(is_active_sidebar("coloured-homepage-section")){?>
+	<div class="coloured-homepage-section">
+		<?php dynamic_sidebar("coloured-homepage-section");?>
+	</div>
+<?php }
+
 
 ?>
 	<div id="primary" class="content-area site-container">

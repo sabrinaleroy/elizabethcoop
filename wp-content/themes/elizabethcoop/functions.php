@@ -130,7 +130,7 @@ add_action( 'widgets_init', 'elizabethcoop_widgets_init' );
  */
 function elizabethcoop_scripts() {
 	
-	wp_enqueue_style( 'elizabethcoop-font', 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:600,700' );
+	wp_enqueue_style( 'elizabethcoop-font', 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400,500,600,700' );
 	wp_enqueue_style( 'elizabethcoop-font', 'https://fonts.googleapis.com/css?family=Lato:300,400,700' );
 	wp_enqueue_style( 'elizabethcoop-style', get_stylesheet_uri() );
 	

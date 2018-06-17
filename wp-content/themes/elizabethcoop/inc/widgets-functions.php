@@ -205,7 +205,7 @@ class slickSlider extends WP_Widget {
 			wp_enqueue_style( 'elizabethcoop-slick', get_template_directory_uri() . '/vendor/slick-v1.9.0/slick-theme.css');
 	    	wp_enqueue_script( 'elizabethcoop-slick', get_template_directory_uri() . '/vendor/slick-v1.9.0/slick.min.js', array('elizabethcoop-jquery'), '20151215', true );
 	    	
-	    	wp_enqueue_script( 'elizabethcoop-slider', get_template_directory_uri() . '/js/slider.js', array('elizabethcoop-jquery'), '20151215', true );
+	    	wp_enqueue_script( 'elizabethcoop-slider', get_template_directory_uri() . '/js/slider.js', array('elizabethcoop-jquery'), '20151224', true );
 	
 	    }           
   	}
