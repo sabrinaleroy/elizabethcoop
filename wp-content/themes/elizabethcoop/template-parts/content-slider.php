@@ -20,7 +20,24 @@
 			<p><?php the_excerpt_max_charlength(170); ?></p>
 			
 		</div>
-		<a href="<?php echo esc_url( get_permalink() ) ?>" class="read-more">Read more</a>
+		
+		<a href="<?php echo esc_url( get_permalink() ) ?>" class="read-more-wrapper">
+			<span class='animated-arrow' >
+		        <span class='the-arrow -left'>
+					<span class='shaft'></span>
+				</span>
+				<span class='main'>
+					<span class='text'>
+						Read More
+					</span>
+					<span class='the-arrow -right'>
+						<span class='shaft'></span>
+					</span>
+		        </span>
+		    </span>
+		</a>
+			
+		
 	</div>
 	
 

@@ -142,7 +142,21 @@ class aPostsList extends WP_Widget {
 			echo '<div class="black_line_container"><div class="black_line"></div></div>';
 			
 			if(get_field('should_i_show_a_view_all_link','widget_'.$args['widget_id'])&&get_field('should_i_show_a_view_all_link','widget_'.$args['widget_id'])=="yes"){
-				echo '<div class="view_all"><a href="#">View All</a></div>';
+				echo '<div class="view_all"><a href="<?php echo esc_url( get_permalink() ) ?>" class="read-more-wrapper">
+			<span class="animated-arrow" >
+		        <span class="the-arrow -left">
+					<span class="shaft"></span>
+				</span>
+				<span class="main">
+					<span class="text">
+						Read More
+					</span>
+					<span class="the-arrow -right">
+						<span class="shaft"></span>
+					</span>
+		        </span>
+		    </span>
+		</a></div>';
 			}
 			
 			echo '</div>';

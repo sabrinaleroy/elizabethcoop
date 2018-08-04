@@ -13,21 +13,31 @@
 	<div class="entry-meta">
 		<div class="thumbnail-container">
 			<?php  
-				global $grid;
-				if($grid==2){
-					elizabethcoop_post_thumbnail("rectangle");
-				}else{
-					elizabethcoop_post_thumbnail("thumbnail");
-				}
+				elizabethcoop_post_thumbnail("rectangle");
 			?>
 		</div>
 		<div class="meta-container">
 		<?php  
 		?>
-			<?php the_title_max_charlength(44, '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
-			<p><?php the_excerpt_max_charlength(170); ?></p>
-			<a href="<?php echo esc_url( get_permalink() ) ?>" class="read-more">Read more</a>
+			<?php the_title_max_charlength(74, '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
+			<p><?php the_excerpt_max_charlength(140); ?></p>
+			<a href="<?php echo esc_url( get_permalink() ) ?>" class="read-more-wrapper">
+				<span class='animated-arrow' >
+			        <span class='the-arrow -left'>
+						<span class='shaft'></span>
+					</span>
+					<span class='main'>
+						<span class='text'>
+							Read More
+						</span>
+						<span class='the-arrow -right'>
+							<span class='shaft'></span>
+						</span>
+			        </span>
+			    </span>
+			</a>
 		</div>
 		
 	</div>
+	<div class="clear"></div>
 </div><!-- #post-<?php the_ID(); ?> -->
