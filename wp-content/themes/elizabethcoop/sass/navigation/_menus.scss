@@ -1,3 +1,4 @@
+.footer-section .widget_nav_menu div,
 .main-navigation {
 	clear: both;
 	display: block;
@@ -6,6 +7,24 @@
 	right: 0;
 	overflow: hidden;
     padding: 0 0 5px 0;
+    &.menu-contact-container,
+    &.menu-footer-container{
+	    right: auto;
+	    left: 0;
+    }
+    &.menu-contact-container{
+	    top: 25px;
+    }
+    @media screen and (max-width: 540px) {
+		&.menu-contact-container,
+	    &.menu-footer-container{
+		    position: relative;
+		    top: auto;
+		    left : auto;
+	    }
+	}
+
+    
 
 	ul {
 		display: block;
@@ -68,6 +87,7 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		@include font-size(0.9375);
+		
 		
 		&:after{
 			content: "/";

@@ -406,6 +406,7 @@ p.site-title {
   text-transform: uppercase;
   margin: 0;
   max-width: 220px;
+  font-weight: 700;
 }
 h1.site-title a,
 p.site-title a {
@@ -1702,6 +1703,7 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.footer-section .widget_nav_menu div,
 .main-navigation {
   clear: both;
   display: block;
@@ -1711,12 +1713,33 @@ a:hover, a:active {
   overflow: hidden;
   padding: 0 0 5px 0;
 }
+.footer-section .widget_nav_menu div.menu-contact-container, .footer-section .widget_nav_menu div.menu-footer-container,
+.main-navigation.menu-contact-container,
+.main-navigation.menu-footer-container {
+  right: auto;
+  left: 0;
+}
+.footer-section .widget_nav_menu div.menu-contact-container,
+.main-navigation.menu-contact-container {
+  top: 25px;
+}
+@media screen and (max-width: 540px) {
+  .footer-section .widget_nav_menu div.menu-contact-container, .footer-section .widget_nav_menu div.menu-footer-container,
+  .main-navigation.menu-contact-container,
+  .main-navigation.menu-footer-container {
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+}
+.footer-section .widget_nav_menu div ul,
 .main-navigation ul {
   display: block;
   list-style: none;
   margin: 0;
   padding: 0;
 }
+.footer-section .widget_nav_menu div ul ul,
 .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -1725,20 +1748,27 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
+.footer-section .widget_nav_menu div ul ul ul,
 .main-navigation ul ul ul {
   left: -999em;
   top: 0;
 }
-.main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
+.footer-section .widget_nav_menu div ul ul li:hover > ul, .footer-section .widget_nav_menu div ul ul li.focus > ul,
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
   left: 100%;
 }
+.footer-section .widget_nav_menu div ul ul a,
 .main-navigation ul ul a {
   width: 200px;
 }
+.footer-section .widget_nav_menu div ul li:hover > ul,
+.footer-section .widget_nav_menu div ul li.focus > ul,
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
   left: auto;
 }
+.footer-section .widget_nav_menu div #magic_line,
 .main-navigation #magic_line {
   width: 0px;
   bottom: 0;
@@ -1748,6 +1778,7 @@ a:hover, a:active {
   background-color: #000000;
   position: absolute;
 }
+.footer-section .widget_nav_menu div li,
 .main-navigation li {
   float: left;
   position: relative;
@@ -1757,6 +1788,7 @@ a:hover, a:active {
   font-size: 15px;
   font-size: 0.9375rem;
 }
+.footer-section .widget_nav_menu div li:after,
 .main-navigation li:after {
   content: "/";
   width: 4px;
@@ -1765,12 +1797,15 @@ a:hover, a:active {
   top: 0;
   right: -17px;
 }
+.footer-section .widget_nav_menu div li:last-child,
 .main-navigation li:last-child {
   margin: 0 0 0 15px;
 }
+.footer-section .widget_nav_menu div li:last-child:after,
 .main-navigation li:last-child:after {
   display: none;
 }
+.footer-section .widget_nav_menu div a,
 .main-navigation a {
   display: block;
   text-decoration: none;
@@ -2208,6 +2243,52 @@ header.site-header {
 
 .bypostauthor {
   display: block;
+}
+
+/*--------------------------------------------------------------
+## footer
+--------------------------------------------------------------*/
+footer.site-footer {
+  padding: 30px 0;
+}
+.home footer.site-footer {
+  background-color: #fbeadd;
+}
+footer.site-footer .site-branding {
+  float: left;
+  width: 30%;
+}
+@media screen and (max-width: 740px) {
+  footer.site-footer .site-branding {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 540px) {
+  footer.site-footer .site-branding {
+    float: none;
+    width: 100%;
+  }
+}
+footer.site-footer .footer-section {
+  float: right;
+  width: 60%;
+  max-width: 350px;
+  position: relative;
+}
+@media screen and (max-width: 740px) {
+  footer.site-footer .footer-section {
+    max-width: 300px;
+  }
+}
+@media screen and (max-width: 540px) {
+  footer.site-footer .footer-section {
+    float: none;
+    width: 100%;
+    margin: 10px 0;
+  }
+  footer.site-footer .footer-section .widget_nav_menu div li:first-child {
+    margin-left: 0px;
+  }
 }
 
 .site-container {

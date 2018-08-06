@@ -14,19 +14,48 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'elizabethcoop' ) ); ?>">
+		<div class="site-container">
+			<div class="site-info">
+				
+				
+				<div class="site-branding">
+					<?php
+					$title_tag = "p";
+						
+					if(get_custom_logo()){
+						?>
+						<<?php echo $title_tag ?> class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+								<?php the_custom_logo(); ?>
+							</a>
+						</<?php echo $title_tag ?>>
+						<?php
+					}else{
+						
+						$elizabethcoop_title = get_bloginfo( 'name', 'display' );
+						$elizabethcoop_title_tab = explode(" ", $elizabethcoop_title);
+						?>
+						<<?php echo $title_tag ?> class="site-title">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php echo $elizabethcoop_title_tab[0]; ?>
+								<span><?php echo $elizabethcoop_title_tab[1]; ?></span>
+							</a>
+						</<?php echo $title_tag ?>>
+						<?php
+					}
+					
+					?>
+				</div><!-- .site-branding -->
 				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'elizabethcoop' ), 'WordPress' );
+				if(is_active_sidebar("footer-section")){?>
+					<div class="footer-section">
+						<?php dynamic_sidebar("footer-section");?>
+					</div>
+				<?php }
+					
 				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'elizabethcoop' ), 'elizabethcoop', '<a href="https://github.com/sabrinaleroy">Sabrina Leroy</a>' );
-				?>
-		</div><!-- .site-info -->
+			</div><!-- .site-info -->
+		</div>
+		<div class="clear"></div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

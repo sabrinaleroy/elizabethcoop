@@ -1,0 +1,35 @@
+footer.site-footer{
+	.home &{
+		background-color: $color__background-headerhome;
+	}
+	padding: $structure__margin-header_desktop 0;
+	.site-branding{
+		float: left;
+		width: 30%;
+		@media screen and (max-width: 740px) {
+			width: 40%;
+		}
+		@media screen and (max-width: 540px) {
+			float: none;
+			width: 100%;
+		}
+	}
+	.footer-section{
+		float: right;
+		width: 60%;
+		max-width: 350px;
+		position: relative;
+		@media screen and (max-width: 740px) {
+			max-width: 300px;
+		}
+		@media screen and (max-width: 540px) {
+			float: none;
+			width: 100%;
+			margin: 10px 0;
+			.widget_nav_menu div li:first-child{
+				margin-left: 0px;
+			}
+		}
+		
+	}
+}
