@@ -1703,7 +1703,8 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-.footer-section .widget_nav_menu div,
+.footer-section .widget_nav_menu div.menu-contact-container,
+.footer-section .widget_nav_menu div.menu-footer-container,
 .main-navigation {
   clear: both;
   display: block;
@@ -1713,18 +1714,23 @@ a:hover, a:active {
   overflow: hidden;
   padding: 0 0 5px 0;
 }
-.footer-section .widget_nav_menu div.menu-contact-container, .footer-section .widget_nav_menu div.menu-footer-container,
+.footer-section .widget_nav_menu div.menu-contact-container.menu-contact-container, .footer-section .widget_nav_menu div.menu-contact-container.menu-footer-container,
+.footer-section .widget_nav_menu div.menu-footer-container.menu-contact-container,
+.footer-section .widget_nav_menu div.menu-footer-container.menu-footer-container,
 .main-navigation.menu-contact-container,
 .main-navigation.menu-footer-container {
   right: auto;
   left: 0;
 }
-.footer-section .widget_nav_menu div.menu-contact-container,
+.footer-section .widget_nav_menu div.menu-contact-container.menu-contact-container,
+.footer-section .widget_nav_menu div.menu-footer-container.menu-contact-container,
 .main-navigation.menu-contact-container {
   top: 25px;
 }
 @media screen and (max-width: 540px) {
-  .footer-section .widget_nav_menu div.menu-contact-container, .footer-section .widget_nav_menu div.menu-footer-container,
+  .footer-section .widget_nav_menu div.menu-contact-container.menu-contact-container, .footer-section .widget_nav_menu div.menu-contact-container.menu-footer-container,
+  .footer-section .widget_nav_menu div.menu-footer-container.menu-contact-container,
+  .footer-section .widget_nav_menu div.menu-footer-container.menu-footer-container,
   .main-navigation.menu-contact-container,
   .main-navigation.menu-footer-container {
     position: relative;
@@ -1732,14 +1738,16 @@ a:hover, a:active {
     left: auto;
   }
 }
-.footer-section .widget_nav_menu div ul,
+.footer-section .widget_nav_menu div.menu-contact-container ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul,
 .main-navigation ul {
   display: block;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.footer-section .widget_nav_menu div ul ul,
+.footer-section .widget_nav_menu div.menu-contact-container ul ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul ul,
 .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
   float: left;
@@ -1748,27 +1756,37 @@ a:hover, a:active {
   left: -999em;
   z-index: 99999;
 }
-.footer-section .widget_nav_menu div ul ul ul,
+.footer-section .widget_nav_menu div.menu-contact-container ul ul ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul ul ul,
 .main-navigation ul ul ul {
   left: -999em;
   top: 0;
 }
-.footer-section .widget_nav_menu div ul ul li:hover > ul, .footer-section .widget_nav_menu div ul ul li.focus > ul,
+.footer-section .widget_nav_menu div.menu-contact-container ul ul li:hover > ul, .footer-section .widget_nav_menu div.menu-contact-container ul ul li.focus > ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul ul li:hover > ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul ul li.focus > ul,
 .main-navigation ul ul li:hover > ul,
 .main-navigation ul ul li.focus > ul {
   left: 100%;
 }
-.footer-section .widget_nav_menu div ul ul a,
+.footer-section .widget_nav_menu div.menu-contact-container ul ul a,
+.footer-section .widget_nav_menu div.menu-footer-container ul ul a,
 .main-navigation ul ul a {
   width: 200px;
 }
-.footer-section .widget_nav_menu div ul li:hover > ul,
-.footer-section .widget_nav_menu div ul li.focus > ul,
+.footer-section .widget_nav_menu div.menu-contact-container ul li:hover > ul,
+.footer-section .widget_nav_menu div.menu-contact-container ul li.focus > ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul li:hover > ul,
+.footer-section .widget_nav_menu div.menu-footer-container ul li.focus > ul,
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
   left: auto;
 }
-.footer-section .widget_nav_menu div #magic_line,
+.footer-section .widget_nav_menu div.menu-contact-container #magic_line_footer,
+.footer-section .widget_nav_menu div.menu-contact-container #magic_line,
+.footer-section .widget_nav_menu div.menu-footer-container #magic_line_footer,
+.footer-section .widget_nav_menu div.menu-footer-container #magic_line,
+.main-navigation #magic_line_footer,
 .main-navigation #magic_line {
   width: 0px;
   bottom: 0;
@@ -1778,7 +1796,8 @@ a:hover, a:active {
   background-color: #000000;
   position: absolute;
 }
-.footer-section .widget_nav_menu div li,
+.footer-section .widget_nav_menu div.menu-contact-container li,
+.footer-section .widget_nav_menu div.menu-footer-container li,
 .main-navigation li {
   float: left;
   position: relative;
@@ -1788,7 +1807,8 @@ a:hover, a:active {
   font-size: 15px;
   font-size: 0.9375rem;
 }
-.footer-section .widget_nav_menu div li:after,
+.footer-section .widget_nav_menu div.menu-contact-container li:after,
+.footer-section .widget_nav_menu div.menu-footer-container li:after,
 .main-navigation li:after {
   content: "/";
   width: 4px;
@@ -1797,15 +1817,18 @@ a:hover, a:active {
   top: 0;
   right: -17px;
 }
-.footer-section .widget_nav_menu div li:last-child,
+.footer-section .widget_nav_menu div.menu-contact-container li:last-child,
+.footer-section .widget_nav_menu div.menu-footer-container li:last-child,
 .main-navigation li:last-child {
   margin: 0 0 0 15px;
 }
-.footer-section .widget_nav_menu div li:last-child:after,
+.footer-section .widget_nav_menu div.menu-contact-container li:last-child:after,
+.footer-section .widget_nav_menu div.menu-footer-container li:last-child:after,
 .main-navigation li:last-child:after {
   display: none;
 }
-.footer-section .widget_nav_menu div a,
+.footer-section .widget_nav_menu div.menu-contact-container a,
+.footer-section .widget_nav_menu div.menu-footer-container a,
 .main-navigation a {
   display: block;
   text-decoration: none;
@@ -2209,7 +2232,7 @@ header.site-header {
 }
 
 /*--------------------------------------------------------------
-## Posts and pages
+## Pages
 --------------------------------------------------------------*/
 .sticky {
   display: block;
@@ -2232,6 +2255,35 @@ header.site-header {
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+## Posts 
+--------------------------------------------------------------*/
+.single.single-post article.single {
+  margin: 70px auto 0 auto;
+  max-width: 970px;
+  width: 100%;
+  padding: 70px 100px;
+  background-color: #ffffff;
+}
+.single.single-post article.single .post-thumbnail-singular {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450px;
+  background-color: #fbeadd;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.single.single-post article.single.has-post-thumbnail {
+  margin: 300px auto 0 auto;
+}
+.single.single-post article.single.has-post-thumbnail .post-thumbnail-singular {
+  height: 750px;
 }
 
 /*--------------------------------------------------------------

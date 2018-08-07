@@ -119,15 +119,15 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 	 * element when on single views.
 	 */
 	function elizabethcoop_post_thumbnail($size = 'thumbnail') {
-		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		if ( post_password_required() || is_attachment() ) {
 			return;
 		}
 
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail($size); ?>
+			<div class="post-thumbnail-singular" style="background-image:url('<?php the_post_thumbnail_url($size); ?>');">
+				
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>

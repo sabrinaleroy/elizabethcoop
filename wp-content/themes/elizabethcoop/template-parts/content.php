@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class("single"); ?>>
 	<header class="entry-header">
 		<?php
 		if ( is_singular() ) :
@@ -29,7 +29,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php elizabethcoop_post_thumbnail(); ?>
+	<?php elizabethcoop_post_thumbnail("full"); ?>
 
 	<div class="entry-content">
 		<?php
