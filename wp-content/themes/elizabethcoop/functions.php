@@ -157,6 +157,11 @@ function elizabethcoop_scripts() {
 add_action( 'wp_enqueue_scripts', 'elizabethcoop_scripts' );
 
 
+function elizabethcoop_admin_scripts() {
+    wp_enqueue_style( 'custom_wp_admin_css', get_template_directory_uri() . '/css/admin.css', false, '1.0.0' );
+}
+add_action( 'admin_enqueue_scripts', 'elizabethcoop_admin_scripts' );
+
 
 // remove wp version param from any enqueued scripts
 function vc_remove_wp_ver_css_js( $src ) {

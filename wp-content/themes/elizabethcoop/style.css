@@ -73,7 +73,7 @@ body {
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
-  font-size: 60px;
+  font-size: 45px;
   margin: 20px 0;
 }
 
@@ -2284,6 +2284,49 @@ header.site-header {
 }
 .single.single-post article.single.has-post-thumbnail .post-thumbnail-singular {
   height: 750px;
+}
+.single.single-post article.single h1.entry-title {
+  text-align: center;
+  position: relative;
+}
+.single.single-post article.single h1.entry-title::before {
+  content: "";
+  background-color: #000000;
+  position: relative;
+  top: -20px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 70px;
+  height: 6px;
+  display: block;
+}
+.single.single-post article.single .entry-content {
+  font-family: "Lato",sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  font-weight: 300;
+  line-height: 23px;
+  margin: 0 0 20px 0;
+  padding: 0 0 30px 0;
+  border-bottom: 1px solid #000000;
+}
+.single.single-post article.single .entry-content p.has-drop-cap:first-letter {
+  float: left;
+  font-size: 85px;
+  line-height: 68px;
+  margin: 0px 5px 0px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Cormorant Garamond", serif;
+}
+.single.single-post article.single .entry-content blockquote {
+  padding: 0 0 0 30px;
+  margin: 0;
+  border-left: 3px solid #000000;
+}
+.single.single-post article.single .entry-content ul {
+  margin: 20px 0;
+  padding: 0 20px;
 }
 
 /*--------------------------------------------------------------
