@@ -2285,6 +2285,16 @@ header.site-header {
 .single.single-post article.single.has-post-thumbnail .post-thumbnail-singular {
   height: 750px;
 }
+.single.single-post article.single.has-post-thumbnail .post-thumbnail-singular::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+}
 .single.single-post article.single h1.entry-title {
   text-align: center;
   position: relative;
@@ -2327,6 +2337,10 @@ header.site-header {
 .single.single-post article.single .entry-content ul {
   margin: 20px 0;
   padding: 0 20px;
+}
+.single.single-post article.single .entry-content a {
+  font-weight: 700;
+  text-decoration: none;
 }
 
 /*--------------------------------------------------------------

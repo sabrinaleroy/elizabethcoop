@@ -21,6 +21,16 @@
 		margin: 300px auto 0 auto;
 		.post-thumbnail-singular{
 			height: 750px;
+			&::after{
+				content:"";
+				display: block;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top:0;
+				left: 0;
+				background-color: rgba(255,255,255,0.5);
+			}
 		}
 	}
 	
@@ -65,6 +75,10 @@
 		ul{
 			margin: 20px 0;
 			padding: 0 20px;
+		}
+		a{
+			font-weight: 700;
+			text-decoration: none;
 		}
     }
     
