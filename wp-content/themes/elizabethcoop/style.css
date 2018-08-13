@@ -2342,6 +2342,38 @@ header.site-header {
   font-weight: 700;
   text-decoration: none;
 }
+.single.single-post article.single .entry-footer::after {
+  content: "";
+  clear: both;
+}
+.single.single-post article.single .entry-footer .tags-links {
+  display: block;
+  float: left;
+  width: 75%;
+}
+.single.single-post article.single .entry-footer .tags-links a {
+  display: inline-block;
+  margin: 0 4px 7px 0;
+  font-size: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #333333;
+  padding: 7px 10px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #333333;
+}
+.single.single-post article.single .entry-footer .tags-links a:hover {
+  background-color: #ffffff;
+  color: #333333;
+}
+.single.single-post article.single .entry-footer .posted-on {
+  display: block;
+  float: right;
+  font-size: 12px;
+  color: #333333;
+  padding: 7px 10px;
+}
 
 /*--------------------------------------------------------------
 ## Comments

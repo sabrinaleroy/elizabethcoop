@@ -40,10 +40,10 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php elizabethcoop_entry_footer(); 
+		<?php
+			elizabethcoop_entry_footer(); 
 			elizabethcoop_posted_on();
-			
-			?>
-		
+		?>
+		<div class="clear"></div>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
