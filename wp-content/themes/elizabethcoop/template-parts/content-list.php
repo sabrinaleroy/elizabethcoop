@@ -40,4 +40,4 @@
 		
 	</div>
 	<div class="clear"></div>
-</div><!-- #post-<?php the_ID(); ?> -->
+</div>

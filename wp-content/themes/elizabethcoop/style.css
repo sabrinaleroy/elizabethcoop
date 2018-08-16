@@ -1466,6 +1466,10 @@ table {
   }
 }
 
+#related-posts .grid-list .post .post-thumbnail-singular {
+  height: 280px;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -2150,32 +2154,39 @@ a:hover, a:active {
   overflow: hidden;
 }
 
+.site-container,
 .white-homepage-section {
   width: 100%;
   overflow: hidden;
 }
+.site-container .widget,
 .white-homepage-section .widget {
   margin: 100px 0 0 0;
   /* Make sure select elements fit in widgets. */
 }
 @media (max-width: 490px) {
+  .site-container .widget,
   .white-homepage-section .widget {
     margin: 30px 0 0 0;
   }
 }
+.site-container .widget select,
 .white-homepage-section .widget select {
   max-width: 100%;
 }
+.site-container .widget .widget_header,
 .white-homepage-section .widget .widget_header {
   margin: 0 0 40px 0;
   display: table;
   width: 100%;
   position: relative;
 }
+.site-container .widget .widget_header .widget_title_container,
 .white-homepage-section .widget .widget_header .widget_title_container {
   display: table-cell;
   vertical-align: middle;
 }
+.site-container .widget .widget_header .widget_title_container h2,
 .white-homepage-section .widget .widget_header .widget_title_container h2 {
   display: inline-block;
   padding: 0 30px 0 0;
@@ -2187,17 +2198,20 @@ a:hover, a:active {
   text-transform: uppercase;
   font-weight: 400;
 }
+.site-container .widget .widget_header .black_line_container,
 .white-homepage-section .widget .widget_header .black_line_container {
   display: table-cell;
   vertical-align: middle;
   width: 100%;
   height: 29px;
 }
+.site-container .widget .widget_header .black_line_container .black_line,
 .white-homepage-section .widget .widget_header .black_line_container .black_line {
   height: 6px;
   width: 100%;
   background-color: #000000;
 }
+.site-container .widget .widget_header .view_all,
 .white-homepage-section .widget .widget_header .view_all {
   width: 185px;
   position: absolute;
@@ -2210,10 +2224,12 @@ a:hover, a:active {
   background-color: #ffffff;
 }
 @media (max-width: 490px) {
+  .site-container .widget .widget_header .view_all,
   .white-homepage-section .widget .widget_header .view_all {
     display: none;
   }
 }
+.site-container .widget .widget_header .view_all a,
 .white-homepage-section .widget .widget_header .view_all a {
   text-decoration: none;
 }
@@ -2390,10 +2406,13 @@ header.site-header {
 ## footer
 --------------------------------------------------------------*/
 footer.site-footer {
-  padding: 30px 0;
+  margin: 30px 0 0 0;
+  padding: 50px 0 30px 0;
+  border-top: 1px solid #000000;
 }
 .home footer.site-footer {
   background-color: #fbeadd;
+  border-top: 0px solid #000000;
 }
 footer.site-footer .site-branding {
   float: left;

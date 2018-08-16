@@ -20,6 +20,8 @@ get_header();
 		
 				?>
 				<div class="site-container">
+				<?php elizabethcoop_related_articles($post)?>
+					
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template.
 					if ( comments_open() || get_comments_number() ) :
