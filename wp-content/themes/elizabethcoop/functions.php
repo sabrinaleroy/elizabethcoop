@@ -174,6 +174,15 @@ add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
 
 
+
+function custom_rewrite() {
+	
+	add_rewrite_rule('^(.+?)/page/?([0-9]{1,})/?$', 'index.php?category_name=$matches[1]&paged=$matches[2]', 'top'); //   /categoryname/page/pagenumber
+	
+}
+add_action('init', 'custom_rewrite');
+
+
 /**
  * Custom template tags for this theme.
  */

@@ -87,15 +87,56 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 			<?php
-			the_post_thumbnail($size, array(
-				'alt' => the_title_attribute( array(
-					'echo' => false,
-				) ),
-			) );
+				if(has_post_thumbnail()){
+					the_post_thumbnail($size, array(
+						'alt' => the_title_attribute( array(
+							'echo' => false,
+						) ),
+					) );
+				}else{
+					echo '<img src="'.get_stylesheet_directory_uri().'/images/placeholder-'.$size.'.jpg" alt="'.get_the_title().'"/>';
+				}
 			?>
 		</a>
 
 		<?php
 		endif; // End is_singular().
 	}
+endif;
+
+
+/**
+ * Add a span around the title prefix so that the prefix can be hidden with CSS
+ * if desired.
+ * Note that this will only work with LTR languages.
+ *
+ * @param string $title Archive title.
+ * @return string Archive title with inserted span around prefix.
+ */
+ 
+if ( ! function_exists( 'elizabethcoop_hide_the_archive_title' ) ) :
+function elizabethcoop_hide_the_archive_title( $title ) {
+	// Skip if the site isn't LTR, this is visual, not functional.
+	// Should try to work out an elegant solution that works for both directions.
+	if ( is_rtl() ) {
+		return $title;
+	}
+	// Split the title into parts so we can wrap them with spans.
+	$title_parts = explode( ': ', $title, 2 );
+	// Glue it back together again.
+	if ( ! empty( $title_parts[1] ) ) {
+		$title = wp_kses(
+			$title_parts[1],
+			array(
+				'span' => array(
+					'class' => array(),
+				),
+			)
+		);
+		$title = '<span class="screen-reader-text">' . esc_html( $title_parts[0] ) . ': </span>' . $title;
+	}
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'elizabethcoop_hide_the_archive_title' );
+
 endif;

@@ -10,6 +10,9 @@
 	overflow: hidden;
 
 	.widget {
+		&.related-posts{
+			margin: 30px 0 0 0;
+		}
 		margin: 100px 0 0 0;
 		@media (max-width: 490px) {
 			margin: 30px 0 0 0;
