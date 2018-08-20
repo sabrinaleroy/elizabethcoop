@@ -77,10 +77,16 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 		}
 
 		if ( is_singular() ) :
+			$background = "";
+			if(has_post_thumbnail()){
+				$background = 'style="background-image:url('.get_the_post_thumbnail_url(get_the_ID(),$size).');"';
+			}
+			
 			?>
 
-			<div class="post-thumbnail-singular" style="background-image:url('<?php the_post_thumbnail_url($size); ?>');">
-				
+			<div class="post-thumbnail-singular"  <?php echo $background; ?>>
+				<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
+				</a>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>

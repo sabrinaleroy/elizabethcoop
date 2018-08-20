@@ -1467,9 +1467,20 @@ table {
   }
 }
 
-#related-posts ss
-.grid-list .post .post-thumbnail-singular {
+#related-posts .grid-list .post .post-thumbnail-singular {
+  background-image: url("images/placeholder-rectangle.jpg");
   height: 280px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+#related-posts .grid-list .post .post-thumbnail-singular a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
 }
 
 /*--------------------------------------------------------------
@@ -2300,6 +2311,9 @@ header.site-header {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.single.single-post article.single .post-thumbnail-singular a {
+  display: none;
 }
 .single.single-post article.single.has-post-thumbnail {
   margin: 300px auto 0 auto;

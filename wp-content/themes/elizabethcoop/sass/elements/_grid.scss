@@ -414,11 +414,24 @@
 		}
 	}
 }
-#related-posts{ss
+#related-posts{
 	.grid-list{
 		.post{
 			.post-thumbnail-singular{
+				background-image: url('images/placeholder-rectangle.jpg');
 				height: 280px;
+				position: relative;
+				
+				background-size: cover;
+	 			background-position: center;
+				a{
+					position: absolute;
+					top: 0;
+					left: 0;
+					height: 100%;
+					width: 100%;
+					display: block;
+				}
 			}
 		}
 	}
