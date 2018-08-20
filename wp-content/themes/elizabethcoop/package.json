@@ -1,0 +1,22 @@
+{
+  "name": "elizabethcoop",
+  "version": "1.0.0",
+  "description": "This is the theme for elizabethcoop.com WordPress",
+  "main": "index.php",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabrinaleroy/elizabethcoop.git"
+  },
+  "author": "Sabrina Leroy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sabrinaleroy/elizabethcoop/issues"
+  },
+  "homepage": "https://github.com/sabrinaleroy/elizabethcoop#readme",
+  "devDependencies": {
+    "grunt": "^1.0.2",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}

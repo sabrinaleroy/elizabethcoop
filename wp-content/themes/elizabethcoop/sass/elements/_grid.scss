@@ -1,0 +1,425 @@
+.grid-list{
+	.post{
+		float: left;
+		&.title_hover{
+			.meta-container{
+				width: 100%;
+			    margin: 0 auto;
+			    position: relative;
+			    top: -40px;
+			    background-color: $color__background-body;
+			    box-sizing: border-box;
+			    padding: 20px 0px;
+			    
+				.entry-title{
+					font-size: 22px;
+					font-weight: 400;
+					padding: 0 0 15px 0;
+					margin: 0;
+					@media (max-width: 900px) {
+						font-size: 20px;
+					}
+					@media (max-width: 850px) {
+						font-size: 18px;
+					}
+					a{
+						text-decoration: none;
+					}
+				}
+				p{
+					font-size: 14px;
+				}
+				
+				.read-more-wrapper{
+					display: block;
+					margin: 20px 0 ;
+					text-align: right;
+				}
+				.read-more{
+					@include transition(0.5s);
+					font-weight: 700;
+					display: inline-block;
+					text-transform: uppercase;
+					letter-spacing: 3px;
+					text-decoration: none;
+					padding: 20px 65px 20px 0;
+					font-size: 14px;
+					text-align: center;
+					background-image: url(./images/arrow.png);
+					background-repeat: no-repeat;
+					background-position: right 30px center; 
+				}
+				
+			}
+		}
+	}
+	&.grid-2{
+		.post{
+			width: 48.75%;
+			margin: 0 2.5% 0px 0;
+			&:nth-child(2n){
+				margin: 0 0 0px 0;
+			}
+			&.title_hover{
+				.meta-container{
+					
+					width: 90%;
+					margin: 0 auto;
+					position: relative;
+					top : -100px;
+					background-color: $color__background-body;
+					box-sizing: border-box;
+					padding: 20px;
+					.entry-title{
+						font-size: 37px;
+						line-height: 40px;
+						@media (max-width: 880px) {
+							font-size: 30px;
+							line-height: 33px;
+							padding: 0 0 4px 0;
+						}
+						a{
+						}
+					}
+				}
+			}
+		}
+	}
+	&.grid-3{	
+		.post{
+			width: 31.667%;
+			margin: 0 2.5% 0px 0;
+			.entry-title{
+				border-bottom: 1px solid $color__text-screen;
+				min-height: 68px;
+			}
+			p{
+				display: none;
+			}
+			$text-arrow-space-grid3: 12px;
+			$shaft-width-grid3: 18px;
+			$arrow-head-width-grid3: 8px;
+			.read-more-wrapper{
+				&:hover{
+				    
+				    .animated-arrow {
+					  
+					    
+					    > .the-arrow.-left {
+					      > .shaft {
+					        width: $shaft-width-grid3;
+					        &:before,
+					        &:after {
+					          width: $arrow-head-width-grid3;
+					        }
+					
+					        &:before {
+					          transform: rotate(40deg);
+					        }
+					
+					        &:after {
+					          transform: rotate(-40deg);
+					        }
+					      }
+					    }
+					    
+					    > .main {
+					      transform: translateX($shaft-width-grid3 + $text-arrow-space-grid3);
+					      
+					      > .the-arrow.-right {
+					        > .shaft {
+					          width: 0;
+					          transform: translateX(200%);
+					          transition-delay: 0;
+					          
+					          &:before,
+					          &:after {
+					            width: 0;
+					            transition-delay: 0;
+					            transition: all 0.1s;
+					          }
+					
+					          &:before {
+					            transform: rotate(0);
+					          }
+					
+					          &:after {
+					            transform: rotate(0);
+					          }
+					        }
+					      }
+					    }
+					}
+			    }
+				// The Arrow
+				
+				.the-arrow {
+				  width: $shaft-width-grid3;
+				  
+				  &.-left {
+				    top: 6px;
+				  }
+				  
+				  &.-right {
+				    top: 0px;
+				    
+				    > .shaft {
+				      width: $shaft-width-grid3;
+				      					
+				      &:before,
+				      &:after { 
+				        width: $arrow-head-width-grid3;
+				      }
+				    }
+				  }
+				}
+				
+				// Animated Arrow Button
+				
+				.animated-arrow {
+				  font-size: 14px;
+				  @media (max-width: 580px) {
+					font-size: 12px
+				  }
+				  > .main {
+				    > .text {
+				      margin: 0 $text-arrow-space-grid3 0 0;
+				      
+				    }
+				  }
+				}
+			}
+			&:nth-child(3n){
+				margin: 0 0 0px 0;
+			}
+		}
+	}
+	
+	@media (max-width: 750px) {
+		&.grid-2,
+		&.grid-3{
+			.post{
+				width: 48.75%;
+				margin: 0 2.5% -50px 0;
+				&:nth-child(3n){
+					margin: 0 2.5% -50px 0;
+				}
+				&:nth-child(2n){
+					margin: 0 0 -50px 0;
+				}
+				&.title_hover{
+					.meta-container{
+						
+						width: 90%;
+						margin: 0 auto;
+						position: relative;
+						top : -100px;
+						background-color: $color__background-body;
+						box-sizing: border-box;
+						padding: 20px;
+						.entry-title{
+							font-size: 30px;
+							line-height: 33px;
+							padding: 0 0 4px 0;
+							border-bottom: none;
+							a{
+							}
+						}
+						p{
+							display: none;
+						}
+					}
+					$text-arrow-space-grid3: 12px;
+					$shaft-width-grid3: 18px;
+					$arrow-head-width-grid3: 8px;
+					.read-more-wrapper{
+						&:hover{
+						    
+						    .animated-arrow {
+							  
+							    
+							    > .the-arrow.-left {
+							      > .shaft {
+							        width: $shaft-width-grid3;
+							        &:before,
+							        &:after {
+							          width: $arrow-head-width-grid3;
+							        }
+							
+							        &:before {
+							          transform: rotate(40deg);
+							        }
+							
+							        &:after {
+							          transform: rotate(-40deg);
+							        }
+							      }
+							    }
+							    
+							    > .main {
+							      transform: translateX($shaft-width-grid3 + $text-arrow-space-grid3);
+							      
+							      > .the-arrow.-right {
+							        > .shaft {
+							          width: 0;
+							          transform: translateX(200%);
+							          transition-delay: 0;
+							          
+							          &:before,
+							          &:after {
+							            width: 0;
+							            transition-delay: 0;
+							            transition: all 0.1s;
+							          }
+							
+							          &:before {
+							            transform: rotate(0);
+							          }
+							
+							          &:after {
+							            transform: rotate(0);
+							          }
+							        }
+							      }
+							    }
+							}
+					    }
+						// The Arrow
+						
+						.the-arrow {
+						  width: $shaft-width-grid3;
+						  
+						  &.-left {
+						    top: 6px;
+						  }
+						  
+						  &.-right {
+						    top: 0px;
+						    
+						    > .shaft {
+						      width: $shaft-width-grid3;
+						      					
+						      &:before,
+						      &:after { 
+						        width: $arrow-head-width-grid3;
+						      }
+						    }
+						  }
+						}
+						
+						// Animated Arrow Button
+						
+						.animated-arrow {
+						  font-size: 14px;
+						  @media (max-width: 580px) {
+							font-size: 12px
+						  }
+						  > .main {
+						    > .text {
+						      margin: 0 $text-arrow-space-grid3 0 0;
+						      
+						    }
+						  }
+						}
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 490px) {
+		&.grid-2,
+		&.grid-3{
+			.post{
+				width: 100%;
+				float: none;
+				clear: both;
+				border-bottom: 1px solid $color__text-screen;
+				&,
+				&:nth-child(3n),
+				&:nth-child(2n){
+					margin: 0 0 20px 0;
+					padding: 0 0 20px 0;
+				}
+				
+				.entry-meta{
+					.thumbnail-container{
+						width: 30%;
+					    float: left;
+					    overflow: hidden;
+					    margin: 0 2% 0 0;
+					    img{
+						    height: 180px;
+							max-width: none;
+						    width: auto;
+						    position: relative;
+						    left: -34%;
+					    }
+					}
+					
+					.meta-container{
+						width: 68%;
+					    margin: 0 auto;
+					    position: initial;
+					    top: auto;
+					    background-color: #ffffff;
+					    padding: 0 12px;
+					    float: left;
+					    .entry-title{
+							font-size: 22px;
+							line-height: 25px;
+							min-height: 0px;
+							a{
+							}
+						}
+						p{
+							display: block;
+							margin: 10px 0;
+						}
+					}
+					    					
+				}
+			}
+		}
+	}
+	@media (max-width: 350px) {
+		&.grid-2,
+		&.grid-3{
+			.post{
+				
+				
+				.entry-meta{
+					.thumbnail-container{
+						width: 38%;
+					    img{
+						    height: 160px;
+							max-width: none;
+						    width: auto;
+					    }
+					}
+					
+					.meta-container{
+						width: 60%;
+					    .entry-title{
+							margin: 15px 0;
+							font-size: 18px;
+							line-height: normal;
+						}
+						p{
+							display: none;
+						}
+					}
+					    					
+				}
+			}
+		}
+	}
+}
+#related-posts{ss
+	.grid-list{
+		.post{
+			.post-thumbnail-singular{
+				height: 280px;
+			}
+		}
+	}
+}

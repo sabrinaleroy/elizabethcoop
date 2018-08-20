@@ -1,0 +1,12 @@
+@import "colors";
+@import "typography";
+@import "structure";
+@import "columns";
+
+
+/*** variable arrow ***/ 
+$text-arrow-space: 12px;
+$shaft-width: 25px;
+$shaft-thickness: 2px;
+$arrow-head-width: 10px;
+$arrow-head-thickness: $shaft-thickness;
