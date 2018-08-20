@@ -1,7 +1,7 @@
 header.site-header{
+	padding: $structure__margin-header_desktop 0;
 	.home &{
 		background-color: $color__background-headerhome;
 	}
-	padding: $structure__margin-header_desktop 0;
 }
 

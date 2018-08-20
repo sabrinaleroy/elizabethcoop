@@ -1,4 +1,5 @@
-.footer-section .widget_nav_menu div,
+.footer-section .widget_nav_menu div.menu-contact-container,
+.footer-section .widget_nav_menu div.menu-footer-container,
 .main-navigation {
 	clear: both;
 	display: block;
@@ -70,6 +71,7 @@
 			left: auto;
 		}
 	}
+	#magic_line_footer,
 	#magic_line{
 		width: 0px;
 		bottom: 0;

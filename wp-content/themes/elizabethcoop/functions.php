@@ -157,6 +157,11 @@ function elizabethcoop_scripts() {
 add_action( 'wp_enqueue_scripts', 'elizabethcoop_scripts' );
 
 
+function elizabethcoop_admin_scripts() {
+    wp_enqueue_style( 'custom_wp_admin_css', get_template_directory_uri() . '/css/admin.css', false, '1.0.0' );
+}
+add_action( 'admin_enqueue_scripts', 'elizabethcoop_admin_scripts' );
+
 
 // remove wp version param from any enqueued scripts
 function vc_remove_wp_ver_css_js( $src ) {
@@ -167,6 +172,15 @@ function vc_remove_wp_ver_css_js( $src ) {
 add_filter( 'style_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 add_filter( 'script_loader_src', 'vc_remove_wp_ver_css_js', 9999 );
 
+
+
+
+function custom_rewrite() {
+	
+	add_rewrite_rule('^(.+?)/page/?([0-9]{1,})/?$', 'index.php?category_name=$matches[1]&paged=$matches[2]', 'top'); //   /categoryname/page/pagenumber
+	
+}
+add_action('init', 'custom_rewrite');
 
 
 /**
@@ -183,6 +197,11 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Related Posts.
+ */
+require get_template_directory() . '/inc/related-functions.php';
 
 /**
  * Load Jetpack compatibility file.

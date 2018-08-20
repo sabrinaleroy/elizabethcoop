@@ -24,13 +24,8 @@ if ( ! function_exists( 'elizabethcoop_posted_on' ) ) :
 			esc_html( get_the_modified_date() )
 		);
 
-		$posted_on = sprintf(
-			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'elizabethcoop' ),
-			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+		echo '<span class="posted-on">'. __( 'Published', 'elizabethcoop' ).' '. $time_string . '</span>'; // WPCS: XSS OK.
 
 	}
 endif;
@@ -58,56 +53,14 @@ if ( ! function_exists( 'elizabethcoop_entry_footer' ) ) :
 	function elizabethcoop_entry_footer() {
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
+			
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'elizabethcoop' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'elizabethcoop' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-			}
-
-			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'elizabethcoop' ) );
+			$tags_list = get_the_tag_list( '', esc_html_x( ' ', 'list item separator', 'elizabethcoop' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'elizabethcoop' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				echo '<span class="tags-links">' .$tags_list. '</span>';
 			}
 		}
-
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'elizabethcoop' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				)
-			);
-			echo '</span>';
-		}
-
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'elizabethcoop' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
 	}
 endif;
 
@@ -119,30 +72,71 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 	 * element when on single views.
 	 */
 	function elizabethcoop_post_thumbnail($size = 'thumbnail') {
-		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		if ( post_password_required() || is_attachment() ) {
 			return;
 		}
 
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail($size); ?>
+			<div class="post-thumbnail-singular" style="background-image:url('<?php the_post_thumbnail_url($size); ?>');">
+				
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
 
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 			<?php
-			the_post_thumbnail($size, array(
-				'alt' => the_title_attribute( array(
-					'echo' => false,
-				) ),
-			) );
+				if(has_post_thumbnail()){
+					the_post_thumbnail($size, array(
+						'alt' => the_title_attribute( array(
+							'echo' => false,
+						) ),
+					) );
+				}else{
+					echo '<img src="'.get_stylesheet_directory_uri().'/images/placeholder-'.$size.'.jpg" alt="'.get_the_title().'"/>';
+				}
 			?>
 		</a>
 
 		<?php
 		endif; // End is_singular().
 	}
+endif;
+
+
+/**
+ * Add a span around the title prefix so that the prefix can be hidden with CSS
+ * if desired.
+ * Note that this will only work with LTR languages.
+ *
+ * @param string $title Archive title.
+ * @return string Archive title with inserted span around prefix.
+ */
+ 
+if ( ! function_exists( 'elizabethcoop_hide_the_archive_title' ) ) :
+function elizabethcoop_hide_the_archive_title( $title ) {
+	// Skip if the site isn't LTR, this is visual, not functional.
+	// Should try to work out an elegant solution that works for both directions.
+	if ( is_rtl() ) {
+		return $title;
+	}
+	// Split the title into parts so we can wrap them with spans.
+	$title_parts = explode( ': ', $title, 2 );
+	// Glue it back together again.
+	if ( ! empty( $title_parts[1] ) ) {
+		$title = wp_kses(
+			$title_parts[1],
+			array(
+				'span' => array(
+					'class' => array(),
+				),
+			)
+		);
+		$title = '<span class="screen-reader-text">' . esc_html( $title_parts[0] ) . ': </span>' . $title;
+	}
+	return $title;
+}
+add_filter( 'get_the_archive_title', 'elizabethcoop_hide_the_archive_title' );
+
 endif;
