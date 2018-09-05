@@ -474,7 +474,7 @@
             
             // extra
             ' ': '_',
-			"'": '',
+			'\'': '',
 			'?': '',
 			'/': '',
 			'\\': '',
@@ -496,7 +496,7 @@
 		// vars
 		var nonWord = /\W/g;
         var mapping = function (c) {
-            return (map[c] !== undefined) ? map[c] : c;
+            return map[c] || c; 
         };
         
         // replace
@@ -684,7 +684,7 @@
 	*/
 	
 	var buildObject = function( obj, name, value ){
-		
+		//console.log('buildObject', obj, name);
 		// replace [] with placeholder
 		name = name.replace('[]', '[%%index%%]');
 		
@@ -731,14 +731,15 @@
 				// crawl
 				ref = ref[ key ];
 			}
+			//console.log('ref:', ref);
 		}
 	};
 	
 	acf.serialize = function( $el, prefix ){
-			
+		//console.time('serialize');		
 		// vars
 		var obj = {};
-		var inputs = acf.serializeArray( $el );
+		var inputs = $el.find('select, textarea, input').serializeArray();
 		
 		// prefix
 		if( prefix !== undefined ) {
@@ -756,90 +757,12 @@
 		for( var i = 0; i < inputs.length; i++ ) {
 			buildObject( obj, inputs[i].name, inputs[i].value );
 		}
+		//console.timeEnd('serialize');
 		
 		// return
 		return obj;
 	};
 	
-	/**
-	*  acf.serializeArray
-	*
-	*  Similar to $.serializeArray() but works with a parent wrapping element.
-	*
-	*  @date	19/8/18
-	*  @since	5.7.3
-	*
-	*  @param	jQuery $el The element or form to serialize.
-	*  @return	array
-	*/
-	
-	acf.serializeArray = function( $el ){
-		return $el.find('select, textarea, input').serializeArray();
-	}
-	
-	
-	/**
-	*  acf.serializeAjax
-	*
-	*  Returns an object containing name => value data ready to be encoded for Ajax.
-	*
-	*  @date	15/8/18
-	*  @since	5.7.3
-	*
-	*  @param	jQUery $el The element or form to serialize.
-	*  @param	string prefix The input prefix to scope to.
-	*  @return	object
-	*/
-	
-/*
-	acf.serializeAjax = function( $el, prefix ){
-			
-		// vars
-		var data = {};
-		var index = {};
-		var inputs = $el.find('select, textarea, input').serializeArray();
-		
-		// remove prefix
-		if( prefix !== undefined ) {
-			
-			// filter and modify
-			inputs = inputs.filter(function( item ){
-				return item.name.indexOf(prefix) === 0;
-			}).map(function( item ){
-				
-				// remove prefix from name
-				item.name = item.name.slice(prefix.length);
-				
-				// fix [foo][bar] to foo[bar]
-				if( item.name.slice(0, 1) == '[' ) {
-					item.name = item.name.slice(1).replace(']', '');
-				}
-				return item;
-			});
-		}
-		
-		// build object
-		inputs.map(function( item ){
-			
-			// fix foo[] to foo[0], foo[1], etc
-			if( item.name.slice(-2) === '[]' ) {
-				
-				// ensure index exists
-				index[ item.name ] = index[ item.name ] || 0;
-				index[ item.name ]++;
-				
-				// replace [] with [0]
-				item.name = item.name.replace('[]', '[' + (index[ item.name ]-1) + ']');
-			}
-			
-			// append to data
-			data[ item.name ] = item.value;
-		});
-		
-		// return
-		return data;
-	};
-*/
 	
 	/**
 	*  addAction
@@ -1528,7 +1451,7 @@
 	acf.updateUserSetting = function( name, value ){
 		
 		var ajaxData = {
-			action: 'acf/ajax/user_setting',
+			action: 'acf/update_user_setting',
 			name: name,
 			value: value
 		};
@@ -1834,7 +1757,7 @@
 	
 	acf.isset = function( obj /*, level1, level2, ... */ ) {
 		for( var i = 1; i < arguments.length; i++ ) {
-			if( !obj || !obj.hasOwnProperty(arguments[i]) ) {
+			if( !obj.hasOwnProperty(arguments[i]) ) {
 				return false;
 			}
 			obj = obj[ arguments[i] ];
@@ -1856,7 +1779,7 @@
 	
 	acf.isget = function( obj /*, level1, level2, ... */ ) {
 		for( var i = 1; i < arguments.length; i++ ) {
-			if( !obj || !obj.hasOwnProperty(arguments[i]) ) {
+			if( !obj.hasOwnProperty(arguments[i]) ) {
 				return null;
 			}
 			obj = obj[ arguments[i] ];
@@ -5734,8 +5657,8 @@
 				val[ $(this).data('name') ] = $(this).val();
 			});
 			
-			// return false if no lat/lng
-			if( !val.lat || !val.lng ) {
+			// return false if no address
+			if( !val.address ) {
 				val = false;
 			}
 			
@@ -5757,8 +5680,8 @@
 				acf.val( this.$input(name), val[name] );
 			}
 			
-			// return false if no lat/lng
-			if( !val.lat || !val.lng ) {
+			// return false if no address
+			if( !val.address ) {
 				val = false;
 			}
 			
@@ -9409,7 +9332,7 @@
 		type: 'contains',
 		operator: '==contains',
 		label: __('Value contains'),
-		fieldTypes: [ 'text', 'textarea', 'number', 'email', 'url', 'password', 'wysiwyg', 'oembed', 'select' ],
+		fieldTypes: [ 'text', 'textarea', 'number', 'email', 'url', 'password', 'wysiwyg', 'oembed' ],
 		match: function( rule, field ){
 			return containsString( field.val(), rule.value );
 		},
@@ -10468,183 +10391,33 @@
 		
 		xhr: false,
 		
-		timeout: false,
-		
-		wait: 'load',
+		wait: 'ready',
 		
 		events: {
-			'change #page_template':						'onChange',
-			'change #parent_id':							'onChange',
-			'change #post-formats-select':					'onChange',
-			'change .categorychecklist':					'onChange',
-			'change .tagsdiv':								'onChange',
-			'change .acf-taxonomy-field[data-save="1"]':	'onChange',
-			'change #product-type':							'onChange'
+			'change #page_template':								'onChangeTemplate',
+			'change #parent_id':									'onChangeParent',
+			'change #post-formats-select input':					'onChangeFormat',
+			'change .categorychecklist input':						'onChangeTerm',
+			'change .categorychecklist select':						'onChangeTerm',
+			'change .acf-taxonomy-field[data-save="1"] input':		'onChangeTerm',
+			'change .acf-taxonomy-field[data-save="1"] select':		'onChangeTerm'
 		},
 		
-		initialize: function(){
+		data: {
+			//'post_id':		0,
+			//'page_template':	0,
+			//'page_parent':	0,
+			//'page_type':		0,
+			//'post_format':	0,
+			//'post_taxonomy':	0
+		},
 			
-/*
-			// disable if not active
+		fetch: function(){
+			
+			// bail early if not active
 			if( !this.active ) {
-				this.events = {};
-			}
-			
-			// bail early if not for post
-			if( acf.get('screen') !== 'post' ) {
 				return;
 			}
-			
-			'check_screen_data'
-			
-			'check_screen_events'
-				
-*/
-		},
-/*
-		
-		checkScreenEvents: function(){
-			
-			// vars
-			var events = [
-				'change #page_template',
-				'change #parent_id',
-				'change #post-formats-select input',
-				'change .categorychecklist input',
-				'change .categorychecklist select',
-				'change .acf-taxonomy-field[data-save="1"] input',
-				'change .acf-taxonomy-field[data-save="1"] select',
-				'change #product-type'	
-			];
-			
-			acf.screen.on('change', '#product-type', 'fetch');
-		},
-*/
-		
-		
-		isPost: function(){
-			return acf.get('screen') === 'post';
-		},
-		
-		isUser: function(){
-			return acf.get('screen') === 'user';
-		},
-		
-		isTaxonomy: function(){
-			return acf.get('screen') === 'taxonomy';
-		},
-		
-		isAttachment: function(){
-			return acf.get('screen') === 'attachment';
-		},
-		
-		isNavMenu: function(){
-			return acf.get('screen') === 'nav_menu';
-		},
-		
-		isWidget: function(){
-			return acf.get('screen') === 'widget';
-		},
-		
-		isComment: function(){
-			return acf.get('screen') === 'comment';
-		},
-		
-		getPageTemplate: function(){
-			var $el = $('#page_template');
-			return $el.length ? $el.val() : null;
-		},
-		
-		getPageParent: function( e, $el ){
-			var $el = $('#parent_id');
-			return $el.length ? $el.val() : null;
-		},
-		
-		getPageType: function( e, $el ){
-			return this.getPageParent() ? 'child' : 'parent';
-		},
-		
-		getPostFormat: function( e, $el ){
-			var $el = $('#post-formats-select input:checked');
-			if( $el.length ) {
-				var val = $el.val();
-				return (val == '0') ? 'standard' : val;
-			}
-			return null;
-		},
-		
-		getPostTerms: function(){
-			
-			// vars
-			var terms = {};
-			
-			// serialize WP taxonomy postboxes		
-			var data = acf.serialize( $('.categorydiv, .tagsdiv') );
-			
-			// use tax_input (tag, custom-taxonomy) when possible.
-			// this data is already formatted in taxonomy => [terms].
-			if( data.tax_input ) {
-				terms = data.tax_input;
-			}
-			
-			// append "category" which uses a different name
-			if( data.post_category ) {
-				terms.category = data.post_category;
-			}
-			
-			// convert any string values (tags) into array format
-			for( var tax in terms ) {
-				if( !acf.isArray(terms[tax]) ) {
-					terms[tax] = terms[tax].split(', ');
-				}
-			}
-			
-			// loop over taxonomy fields and add their values
-			acf.getFields({type: 'taxonomy'}).map(function( field ){
-				
-				// ignore fields that don't save
-				if( !field.get('save') ) {
-					return;
-				}
-				
-				// vars
-				var val = field.val();
-				var tax = field.get('taxonomy');
-				
-				// check val
-				if( val ) {
-					
-					// ensure terms exists
-					terms[ tax ] = terms[ tax ] || [];
-					
-					// ensure val is an array
-					val = acf.isArray(val) ? val : [val];
-					
-					// append
-					terms[ tax ] = terms[ tax ].concat( val );
-				}
-			});
-			
-			// add WC product type
-			if( (productType = this.getProductType()) !== null ) {
-				terms.product_type = [productType];
-			}
-			
-			// remove duplicate values
-			for( var tax in terms ) {
-				terms[tax] = acf.uniqueArray(terms[tax]);
-			}
-			
-			// return
-			return terms;
-		},
-		
-		getProductType: function(){
-			var $el = $('#product-type');
-			return $el.length ? $el.val() : null;
-		},
-		
-		check: function(){
 			
 			// bail early if not for post
 			if( acf.get('screen') !== 'post' ) {
@@ -10658,44 +10431,16 @@
 			
 			// vars
 			var ajaxData = acf.parseArgs(this.data, {
-				action:	'acf/ajax/check_screen',
-				screen: acf.get('screen'),
-				exclude: []
+				post_id: acf.get('post_id')
 			});
 			
-			// post id
-			if( this.isPost() ) {
-				ajaxData.post_id = acf.get('post_id');
-			}
+			// add action url
+			ajaxData.action = 'acf/post/get_field_groups';
 			
-			// page template
-			if( (pageTemplate = this.getPageTemplate()) !== null ) {
-				ajaxData.page_template = pageTemplate;
-			}
-			
-			// page parent
-			if( (pageParent = this.getPageParent()) !== null ) {
-				ajaxData.page_parent = pageParent;
-			}
-			
-			// page type
-			if( (pageType = this.getPageType()) !== null ) {
-				ajaxData.page_type = pageType;
-			}
-			
-			// post format
-			if( (postFormat = this.getPostFormat()) !== null ) {
-				ajaxData.post_format = postFormat;
-			}
-			
-			// post terms
-			if( (postTerms = this.getPostTerms()) !== null ) {
-				ajaxData.post_terms = postTerms;
-			}
-			
-			// exclude existing postboxes
+			// add ignore
+			ajaxData.exists = [];
 			$('.acf-postbox').not('.acf-hidden').each(function(){
-				ajaxData.exclude.push( $(this).attr('id').substr(4) );
+				ajaxData.exists.push( $(this).attr('id').substr(4) );
 			});
 			
 			// success
@@ -10765,53 +10510,141 @@
 			});
 		},
 		
-		onChange: function( e, $el ){
-			this.setTimeout(this.check, 1);
-		}
-	});
+		syncTaxonomyTerms: function(){
+			
+			// vars
+			var values = [''];
+			
+			// loop over term lists
+			$('.categorychecklist, .acf-taxonomy-field').each(function(){
+				
+				// vars
+				var $el = $(this),
+					$checkbox = $el.find('input[type="checkbox"]').not(':disabled'),
+					$radio = $el.find('input[type="radio"]').not(':disabled'),
+					$select = $el.find('select').not(':disabled'),
+					$hidden = $el.find('input[type="hidden"]').not(':disabled');
+				
+				
+				// bail early if not a field which saves taxonomy terms to post
+				if( $el.is('.acf-taxonomy-field') && $el.attr('data-save') != '1' ) {
+					
+					return;
+					
+				}
+				
+				
+				// bail early if in attachment
+				if( $el.closest('.media-frame').exists() ) {
+					
+					return;
+				
+				}
+				
+				
+				// checkbox
+				if( $checkbox.exists() ) {
+					
+					$checkbox.filter(':checked').each(function(){
+						
+						values.push( $(this).val() );
+						
+					});
+					
+				} else if( $radio.exists() ) {
+					
+					$radio.filter(':checked').each(function(){
+						
+						values.push( $(this).val() );
+						
+					});
+					
+				} else if( $select.exists() ) {
+					
+					$select.find('option:selected').each(function(){
+						
+						values.push( $(this).val() );
+						
+					});
+					
+				} else if( $hidden.exists() ) {
+					
+					$hidden.each(function(){
+						
+						// ignor blank values
+						if( ! $(this).val() ) {
+							
+							return;
+							
+						}
+						
+						values.push( $(this).val() );
+						
+					});
+					
+				}
+								
+			});
 	
-/*	
-	// tests
-	acf.registerScreenChange('#page_template', function( e, $el ){
-		return $('#page_template').val();
-	});
-	
-	acf.registerScreenData({
-		name: 'page_template',
-		change: '#page_template',
-		val: function(){
-			var $input = $(this.el);
-			return $input.length ? $input.val() : null;
-		}
-	});
-	
-	acf.registerScreenData({
-		name: 'post_terms',
-		change: '.acf-taxonomy-field[data-save="1"]',
-		val: function(){
-			var $input = $(this.el);
-			return $input.length ? $input.val() : null;
-		}
-	});
-	
-	acf.registerScreenData({
-		name: 'post_terms',
-		change: '#product-type',
-		val: function( terms ){
-			var $select = $('#product-type');
-			if( $select.length ) {
-				terms.push('product_cat:'+$select.val());
+			
+			// filter duplicates
+			values = values.filter(function(item, pos, self) {
+			    return self.indexOf(item) == pos;
+			});
+			
+			
+			// update screen
+			this.set( 'post_taxonomy', values ).fetch();
+		},
+		
+		onChangeTemplate: function( e, $el ){
+			
+			// update & fetch
+			this.set('page_template', $el.val()).fetch();
+		},
+		
+		onChangeParent: function( e, $el ){
+			
+			// vars
+			var pageType = 'parent';
+			var pageParent = 0;
+			
+			// if is child
+			if( $el.val() != "" ) {
+				pageType = 'child';
+				pageParent = $el.val();
 			}
-			return terms;
+			
+			// update & fetch
+			this.set('page_type', pageType).set('page_parent', pageParent).fetch();
+		},
+		
+		onChangeFormat: function( e, $el ){
+			
+			// vars			
+			var postFormat = $el.val();
+			
+			// default
+			if( postFormat == '0' ) {
+				postFormat = 'standard';
+			}
+			
+			// update & fetch
+			this.set('post_format', postFormat).fetch();
+		},
+		
+		onChangeTerm: function( e, $el ){
+			
+			// bail early if within media popup
+			if( $el.closest('.media-frame').exists() ) {
+				return;
+			}
+			
+			// set timeout to fix issue with chrome which does not register the change has yet happened
+			this.setTimeout(this.syncTaxonomyTerms, 1);
 		}
 	});
 	
-	
-	acf.screen.get('post_terms');
-	acf.screen.getPostTerms();
-	
-*/
-
 })(jQuery);
 
 (function($, undefined){
@@ -11715,7 +11548,7 @@
 			
 			// toolbar
 			var toolbar = args.toolbar;
-			if( toolbar && toolbars && toolbars[toolbar] ) {
+			if( toolbar && typeof toolbars[toolbar] !== 'undefined' ) {
 				
 				for( var i = 1; i <= 4; i++ ) {
 					init[ 'toolbar' + i ] = toolbars[toolbar][i] || '';
@@ -12257,7 +12090,7 @@
 				// create new event to avoid conflicts with prevenDefault (as used in taxonomy form)
 				var event = $.Event(null, args.event);
 				args.success = function(){
-					acf.enableSubmit( $(event.target) ).trigger( event );
+					$(event.target).trigger( event );
 				}
 			}
 			
@@ -12420,13 +12253,19 @@
 		showSpinner: function( $spinner ){
 			$spinner.addClass('is-active');				// add class (WP > 4.2)
 			$spinner.css('display', 'inline-block');	// css (WP < 4.2)
-			return $spinner;
 		},
 		
 		hideSpinner: function( $spinner ){
 			$spinner.removeClass('is-active');			// add class (WP > 4.2)
 			$spinner.css('display', 'none');			// css (WP < 4.2)
-			return $spinner;
+		},
+		
+		disableSubmit: function( $submit ){
+			$submit.prop('disabled', true).addClass('disabled');
+		},
+		
+		enableSubmit: function( $submit ){
+			$submit.prop('disabled', false).removeClass('disabled');
 		},
 		
 		findSubmitWrap: function( $form ){
@@ -12470,7 +12309,7 @@
 			this.hideSpinner( $spinner );
 			
 			// lock
-			acf.disableSubmit( $submit );
+			this.disableSubmit( $submit );
 			this.showSpinner( $spinner.last() );
 		},
 		
@@ -12482,7 +12321,7 @@
 			var $spinner = $wrap.find('.spinner, .acf-spinner');
 			
 			// unlock
-			acf.enableSubmit( $submit );
+			this.enableSubmit( $submit );
 			this.hideSpinner( $spinner );
 		}
 		
@@ -12566,36 +12405,6 @@
 		
 		// return false preventing form submit
 		return false;
-	};
-	
-	/**
-	*  acf.enableSubmit
-	*
-	*  Enables a submit button and returns the element.
-	*
-	*  @date	30/8/18
-	*  @since	5.7.4
-	*
-	*  @param	jQuery $submit The submit button.
-	*  @return	jQuery
-	*/
-	acf.enableSubmit = function( $submit ){
-		return $submit.prop('disabled', false).removeClass('disabled');
-	};
-		
-	/**
-	*  acf.disableSubmit
-	*
-	*  Disables a submit button and returns the element.
-	*
-	*  @date	30/8/18
-	*  @since	5.7.4
-	*
-	*  @param	jQuery $submit The submit button.
-	*  @return	jQuery
-	*/
-	acf.disableSubmit = function( $submit ){
-		return $submit.prop('disabled', true).addClass('disabled');
 	};
 	
 })(jQuery);
@@ -12897,11 +12706,6 @@
 					top = 0;
 					height = 0;
 					$row = $();
-				}
-				
-				// rtl
-				if( acf.get('rtl') ) {
-					thisLeft = Math.ceil( $field.parent().width() - (position.left + $field.outerWidth()) );
 				}
 				
 				// add classes
@@ -13483,9 +13287,7 @@
 				type: 'warning',
 				timeout: 1000
 			});
-		},
-		enableSubmit: acf.enableSubmit,
-		disableSubmit: acf.disableSubmit
+		}
 	});
 	
 	
@@ -13684,8 +13486,7 @@
 	acf.newCompatibility(acf.screen, {
 		update: function(){
 			return this.set.apply(this, arguments);
-		},
-		fetch: acf.screen.check
+		}
 	});
 	_acf.ajax = acf.screen;
 	

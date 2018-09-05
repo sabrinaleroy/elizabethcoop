@@ -48,6 +48,7 @@ class WPSEO_Configuration_Page {
 		exit;
 	}
 
+
 	/**
 	 *  Registers the page for the wizard.
 	 */
@@ -156,6 +157,7 @@ class WPSEO_Configuration_Page {
 		</body>
 		</html>
 		<?php
+
 	}
 
 	/**
@@ -265,4 +267,5 @@ class WPSEO_Configuration_Page {
 	private function remove_notification_option() {
 		WPSEO_Options::set( 'show_onboarding_notice', false );
 	}
+
 }

@@ -263,23 +263,12 @@ class WPSEO_OpenGraph {
 	 * @return boolean
 	 */
 	public function url() {
-		$url         = WPSEO_Frontend::get_instance()->canonical( false, false );
-		$unpaged_url = WPSEO_Frontend::get_instance()->canonical( false, true );
-
-		/*
-		 * If the unpaged URL is the same as the normal URL but just with pagination added, use that.
-		 * This makes sure we always use the unpaged URL when we can, but doesn't break for overridden canonicals.
-		 */
-		if ( is_string( $unpaged_url ) && strpos( $url, $unpaged_url ) === 0 ) {
-			$url = $unpaged_url;
-		}
-
 		/**
 		 * Filter: 'wpseo_opengraph_url' - Allow changing the OpenGraph URL.
 		 *
 		 * @api string $unsigned Canonical URL.
 		 */
-		$url = apply_filters( 'wpseo_opengraph_url', $url );
+		$url = apply_filters( 'wpseo_opengraph_url', WPSEO_Frontend::get_instance()->canonical( false ) );
 
 		if ( is_string( $url ) && $url !== '' ) {
 			$this->og_tag( 'og:url', esc_url( $url ) );
@@ -749,6 +738,7 @@ class WPSEO_OpenGraph {
 		}
 	}
 
+
 	/**
 	 * Outputs the site owner.
 	 *
@@ -778,4 +768,5 @@ class WPSEO_OpenGraph {
 
 		$this->image( $image );
 	}
+
 } /* End of class */

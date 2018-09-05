@@ -315,6 +315,7 @@
 			
 			// get input value
 			var $input = this.$input( name );
+			//console.log($input );
 			var value = $input.length ? $input.val() : null;
 			
 			// set data silently (cache)
@@ -979,7 +980,7 @@
 			// check parent
 			var parent = this.getParent();
 			if( parent ) {
-				ID = parseInt(parent.prop('ID')) || parent.prop('key');
+				ID = parent.prop('ID') || parent.prop('key');
 			}
 			
 			// update
