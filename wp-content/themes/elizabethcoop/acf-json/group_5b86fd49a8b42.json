@@ -1,0 +1,164 @@
+{
+    "key": "group_5b86fd49a8b42",
+    "title": "Category Widget",
+    "fields": [
+        {
+            "key": "field_5b86fd99c39e7",
+            "label": "What format for this page ?",
+            "name": "what_format_for_this_page",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hightlight": "Highlights + List",
+                "list": "Only List"
+            },
+            "default_value": [
+                "list"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b86fd49bd7a4",
+            "label": "How do I fill the highlight Up?",
+            "name": "how_do_i_fill_this_up",
+            "type": "select",
+            "instructions": "Please select a way of filling the highlight up.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b86fd99c39e7",
+                        "operator": "==",
+                        "value": "hightlight"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "manually": "Choose Posts Manually",
+                "recent": "Most Recent Posts",
+                "mostviewed": "Most Viewed Posts"
+            },
+            "default_value": [
+                "manually"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5b86fd49bd896",
+            "label": "Choose the Posts manually",
+            "name": "choose_the_posts_manually_taxo",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b86fd49bd7a4",
+                        "operator": "==",
+                        "value": "manually"
+                    },
+                    {
+                        "field": "field_5b86fd99c39e7",
+                        "operator": "==",
+                        "value": "hightlight"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": [],
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "id",
+            "ui": 1
+        },
+        {
+            "key": "field_5b86fd49bda1d",
+            "label": "Time Range",
+            "name": "how_many_days",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5b86fd49bd7a4",
+                        "operator": "==",
+                        "value": "mostviewed"
+                    },
+                    {
+                        "field": "field_5b86fd99c39e7",
+                        "operator": "==",
+                        "value": "hightlight"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "last24hours": "Last 24 Hours",
+                "last7days": "Last 7 Days",
+                "last30days": "Last 30 Days",
+                "all": "All Time"
+            },
+            "default_value": [
+                "last30days"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1535574303
+}

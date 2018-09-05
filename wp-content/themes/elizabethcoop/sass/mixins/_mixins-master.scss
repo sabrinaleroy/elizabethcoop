@@ -31,3 +31,61 @@
 @mixin transition($time: 0.3s) {
 	transition: all $time ease-in-out;
 }
+
+// keyframes
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+@mixin animate($name, $duration, $iteration, $direction) { 
+	animation-duration: $duration;
+	animation-iteration-count: $iteration;
+	animation-name: $name;
+	animation-direction: $direction;
+}
+
+
+@include keyframes(loading) {
+	
+	
+	0%{
+		right: 0;
+		left: auto;
+		width: 100%;
+	}
+	25%{
+		width: 0%;
+	}
+	49%{
+		width: 100%;
+		right: 0;
+		left: auto;
+	}
+	50%{
+		width: 100%;
+		right: auto;
+		left: 0;
+	}
+	75%{
+		width: 0%;
+	}
+	100%{
+		width: 100%;
+		right: auto;
+		left: 0;
+	}
+}
+@mixin loading() {
+  @include animate(loading, 2.5s, infinite, normal);
+}
+

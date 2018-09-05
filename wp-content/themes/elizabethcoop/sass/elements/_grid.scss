@@ -35,20 +35,6 @@
 					margin: 20px 0 ;
 					text-align: right;
 				}
-				.read-more{
-					@include transition(0.5s);
-					font-weight: 700;
-					display: inline-block;
-					text-transform: uppercase;
-					letter-spacing: 3px;
-					text-decoration: none;
-					padding: 20px 65px 20px 0;
-					font-size: 14px;
-					text-align: center;
-					background-image: url(./images/arrow.png);
-					background-repeat: no-repeat;
-					background-position: right 30px center; 
-				}
 				
 			}
 		}

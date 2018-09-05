@@ -38,6 +38,9 @@
 .site-container{
 	margin: 0 auto;
 	max-width: $size__site-container;
-	width: 98%;
+	width: 95%;
 	position: relative;
+	@media (max-width: 750px) {
+		width: 90%;
+	}
 }

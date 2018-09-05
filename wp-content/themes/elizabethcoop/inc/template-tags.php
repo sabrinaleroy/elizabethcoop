@@ -55,10 +55,11 @@ if ( ! function_exists( 'elizabethcoop_entry_footer' ) ) :
 		if ( 'post' === get_post_type() ) {
 			
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ' ', 'list item separator', 'elizabethcoop' ) );
+			$tags_list = get_the_tag_list( '', esc_html_x( '', 'list item separator', 'elizabethcoop' ) );
+			$category_list = get_the_category_list( '', esc_html_x( '', 'list item separator', 'elizabethcoop' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				echo '<span class="tags-links">' .$tags_list. '</span>';
+				echo '<span class="tags-links">' .$category_list.$tags_list. '</span>';
 			}
 		}
 	}
@@ -89,8 +90,32 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 				</a>
 			</div><!-- .post-thumbnail -->
 
-		<?php else : ?>
+		<?php elseif($size=="first") : 
+			$background = "";
+			if(has_post_thumbnail()){
+				$background = 'style="background-image:url('.get_the_post_thumbnail_url(get_the_ID(),"large").');"';
+			}
+			
+			?>
 
+			<div class="post-thumbnail-first"  <?php echo $background; ?>>
+				<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
+				</a>
+			</div><!-- .post-thumbnail -->
+		<?php elseif($size=="four") : 
+			$background = "";
+			if(has_post_thumbnail()){
+				$background = 'style="background-image:url('.get_the_post_thumbnail_url(get_the_ID(),"thumbnail").');"';
+			}
+			
+			?>
+
+			<div class="post-thumbnail-four"  <?php echo $background; ?>>
+				<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
+				</a>
+			</div><!-- .post-thumbnail -->
+
+		<?php else : ?>
 		<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 			<?php
 				if(has_post_thumbnail()){
@@ -146,3 +171,43 @@ function elizabethcoop_hide_the_archive_title( $title ) {
 add_filter( 'get_the_archive_title', 'elizabethcoop_hide_the_archive_title' );
 
 endif;
+
+
+
+
+if ( ! function_exists( 'elizabethcoop_pagination' ) ) :
+/**
+ * load more pagination
+ */
+function elizabethcoop_pagination($initial_number_posts = 0,$total_number_posts = 0){
+	
+	if($total_number_posts > 9){
+	?>
+		<div class="loadmore-container">
+			
+			<div class="number_posts">
+				<span class="post_showing"><?php echo $initial_number_posts; ?></span> 
+				<?php echo _x( 'of', 'mlife-theme' ); ?>
+				<span class="total_post"><?php echo $total_number_posts; ?></span>
+				
+			</div>
+			<a class="load-more-button"> 
+				<?php echo _x( 'Load More', 'elizabethcoop' ); ?>
+				<span class="arrow_down">
+						<div class="chevron"></div>
+					
+				</span>
+			</a>
+			<div class="no-more">
+				<?php echo _x( 'No more to load', 'elizabethcoop' ); ?>
+			</div>
+			<?php 
+				the_posts_navigation();	// keep the pagination for google and for the loadmore.js to find the next page.
+			?>
+		</div>
+	<?php
+	}
+}
+endif;
+
+

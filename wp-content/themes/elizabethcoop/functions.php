@@ -147,6 +147,8 @@ function elizabethcoop_scripts() {
 	wp_enqueue_script( 'elizabethcoop-jquery', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array(), '20151215', true );
 	wp_enqueue_script( 'elizabethcoop-navigation', get_template_directory_uri() . '/js/navigation.js', array('elizabethcoop-jquery'), '20151215', true );	
 	wp_enqueue_script( 'elizabethcoop-titles', get_template_directory_uri() . '/js/titles.js', array('elizabethcoop-jquery'), '20151215', true );	
+	
+	wp_enqueue_script( 'elizabethcoop-loadmore', get_template_directory_uri() . '/js/loadmore.js', array('elizabethcoop-jquery'), '20151215', true );	
 
 	wp_enqueue_script( 'elizabethcoop-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
@@ -202,6 +204,12 @@ require get_template_directory() . '/inc/customizer.php';
  * Related Posts.
  */
 require get_template_directory() . '/inc/related-functions.php';
+
+/**
+ * ACF functions.
+ */
+require get_template_directory() . '/inc/acf-functions.php';
+
 
 /**
  * Load Jetpack compatibility file.

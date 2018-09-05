@@ -15,6 +15,7 @@ footer.site-footer{
 		@media screen and (max-width: 540px) {
 			float: none;
 			width: 100%;
+			margin: 0 0 40px 0;
 		}
 	}
 	.footer-section{
@@ -32,6 +33,9 @@ footer.site-footer{
 			.widget_nav_menu div li:first-child{
 				margin-left: 0px;
 			}
+		}
+		.widget{
+			margin: 2px 0 0 0;
 		}
 		
 	}

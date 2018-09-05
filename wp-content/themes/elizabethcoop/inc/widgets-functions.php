@@ -355,3 +355,145 @@ function get_query_widget($widget_id = false){
 		return $the_query;
 	}
 }
+
+function get_query_widget_taxo($taxo_id = false){
+	
+	
+	$how_many_posts = 5;
+	$posts = "";
+	$the_query = false;
+	$posts_id_return = array();
+	if($taxo_id != false){
+		
+		if(get_field('how_do_i_fill_this_up','term_'.$taxo_id)){
+			$method = get_field('how_do_i_fill_this_up','term_'.$taxo_id);
+			
+			switch($method){
+				case 'manually':
+					if(get_field('choose_the_posts_manually_taxo','term_'.$taxo_id)){
+						$posts_id = get_field('choose_the_posts_manually_taxo','term_'.$taxo_id);
+					}
+			
+					$the_query_args = array(
+						'post_type' => 'post',
+						'post__in' => $posts_id,
+					);
+			    	$the_query = new WP_Query( $the_query_args );
+			    	
+			    	$posts = $the_query->get_posts(); 
+			    	
+			    	foreach($posts as $post){
+						if($post->ID){
+					    	$posts_id_return[] = $post->ID;
+				    	}
+					}
+					
+			    break;
+			    case 'mostviewed':
+			    
+			    	$how_many_days = 'last30days';
+			    	if(get_field('how_many_days','term_'.$taxo_id)){
+						$how_many_days = get_field('how_many_posts','term_'.$taxo_id);
+					}
+					
+					
+			        $WPP_query_args = array(
+					    'range' => $how_many_days,
+					    'limit' => $how_many_posts,
+					    'post_type' => 'post'
+					);
+					
+					if(is_tag($taxo_id)){
+						$WPP_query_args['taxonomy'] = 'post_tag';
+						$WPP_query_args['term_id'] =  $taxo_id;
+					}else{
+						$WPP_query_args['cat'] =  $taxo_id;
+					}
+					$WPP_query = new WPP_query( $WPP_query_args );
+					$WPP_posts = $WPP_query->get_posts();
+					
+					
+					foreach($WPP_posts as $WPP_post){
+						if($WPP_post->id){
+					    	$posts_id_return[] = $WPP_post->id;
+				    	}
+					}
+					
+					
+					
+			    break;
+				case 'recent':
+			    default:
+					$the_query_args = array(
+						'post_type' => 'post',
+						'orderby' => 'date',
+						'order'   => 'DESC',
+						'posts_per_page' => $how_many_posts,
+						
+					);
+					$the_query_args['tax_query'] = array(
+					        'relation' => 'OR',
+					        array(
+					            'taxonomy' => 'post_tag',
+					            'field' => 'term_id',
+					            'terms' => array(str_replace("term_", "", $taxo_id))
+					        ),
+					        array(
+					            'taxonomy' => 'category',
+					            'field' => 'term_id',
+					            'terms' => array(str_replace("term_", "", $taxo_id))
+					        )
+					    );
+					$the_query = new WP_Query( $the_query_args );
+			    	
+			    	$posts = $the_query->get_posts(); 
+			    	
+
+			    	foreach($posts as $post){
+				    	if($post->ID){
+					    	$posts_id_return[] = $post->ID;
+				    	}
+						
+					}
+			    break;
+			}
+		}
+	}
+	if(count($posts_id_return)<1){
+		return false;
+	}else{
+		if(count($posts_id)<$how_many_posts){
+			$how_many_posts_now = $how_many_posts-count($posts_id);
+			$the_query_args = array(
+				'post_type' => 'post',
+				'orderby' => 'date',
+				'order'   => 'DESC',
+				'post__not_in' => $posts_id_return,
+				'posts_per_page' => $how_many_posts_now,
+			);
+			
+			$the_query_args['tax_query'] = array(
+			        'relation' => 'OR',
+			        array(
+			            'taxonomy' => 'post_tag',
+			            'field' => 'term_id',
+			            'terms' => array(str_replace("term_", "", $taxo_id))
+			        ),
+			        array(
+			            'taxonomy' => 'category',
+			            'field' => 'term_id',
+			            'terms' => array(str_replace("term_", "", $taxo_id))
+			        )
+			    );
+			$the_query = new WP_Query( $the_query_args );
+	    	
+	    	$posts = $the_query->get_posts(); 
+	    	
+			
+	    	foreach($posts as $post){
+				$posts_id_return[] = $post->ID;
+			}
+		}
+		return $posts_id_return;
+	}
+}
