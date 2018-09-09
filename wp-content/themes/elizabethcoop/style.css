@@ -2874,7 +2874,7 @@ header.site-header {
   border-bottom: 1px solid #000000;
 }
 .single.single-post article.single .entry-content h1 {
-  line-height: auto;
+  line-height: 38px;
 }
 .single.single-post article.single .entry-content p.has-drop-cap:first-letter {
   float: left;
