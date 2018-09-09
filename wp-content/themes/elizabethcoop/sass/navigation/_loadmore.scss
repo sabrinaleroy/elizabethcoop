@@ -24,18 +24,28 @@
 		    &:before{
 			    content: "";
 			    position: absolute;
-			    top: 2px;
-			    height: 100%;
+			    top: 5px;
+				height: 80%;
 			    width: 2px;
-			    left: 8px;
+			    left: 6px;
 			    background: #fff;
 			    transition: background-color 0.3s ease-in-out;
+		    }
+		    &:after{
+			    content: "";
+			    position: absolute;
+			    top: 0;
+			    height: 0;
+			    width: 100%;
+			    left: 0px;
+			    background: #cacaca;
+			    @include transition();
 		    }
 		    .chevron {
 				position: absolute;
 				bottom: 0;
-				width: 18px;
-			    height: 2px;
+				width: 14px;
+				height: 3px;
 				opacity: 1;
 				transform: scale(1);
 			
@@ -73,14 +83,12 @@
 			.arrow_down{
 
 			    &:before{
-				    content: "";
-				    position: absolute;
-				    top: 2px;
-				    height: 100%;
-				    width: 2px;
-				    left: 8px;
 				    background: #000;
 			    }
+			     &:after{
+				    background-color: $color__background-headerhome;
+			    }
+			    
 			    .chevron {
 				
 					&:before,
@@ -98,19 +106,22 @@
 		&.loading{
 			.arrow_down{
 				&:before{
-					-webkit-animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+					
+				}
+				&:after{
+					height : 130%;
+					-webkit-animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
 				    /* Safari 4+ */
 				    
-				    -moz-animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+				    -moz-animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
 				    /* Fx 5+ */
 				    
-				    -o-animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+				    -o-animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
 				    /* Opera 12+ */
 				    
-				    animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+				    animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
 				}
 			}
-
 		}
 	}
 	.no-more{

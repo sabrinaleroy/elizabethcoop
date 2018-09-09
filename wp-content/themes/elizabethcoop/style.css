@@ -2191,18 +2191,28 @@ a:hover, a:active {
 .loadmore-container .load-more-button .arrow_down:before {
   content: "";
   position: absolute;
-  top: 2px;
-  height: 100%;
+  top: 5px;
+  height: 80%;
   width: 2px;
-  left: 8px;
+  left: 6px;
   background: #fff;
   transition: background-color 0.3s ease-in-out;
+}
+.loadmore-container .load-more-button .arrow_down:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 0;
+  width: 100%;
+  left: 0px;
+  background: #cacaca;
+  transition: all 0.3s ease-in-out;
 }
 .loadmore-container .load-more-button .arrow_down .chevron {
   position: absolute;
   bottom: 0;
-  width: 18px;
-  height: 2px;
+  width: 14px;
+  height: 3px;
   opacity: 1;
   transform: scale(1);
 }
@@ -2231,13 +2241,10 @@ a:hover, a:active {
   color: #333333;
 }
 .loadmore-container .load-more-button:hover .arrow_down:before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  height: 100%;
-  width: 2px;
-  left: 8px;
   background: #000;
+}
+.loadmore-container .load-more-button:hover .arrow_down:after {
+  background-color: #fbeadd;
 }
 .loadmore-container .load-more-button:hover .arrow_down .chevron:before, .loadmore-container .load-more-button:hover .arrow_down .chevron:after {
   content: "";
@@ -2247,14 +2254,15 @@ a:hover, a:active {
   width: 50%;
   background: #000;
 }
-.loadmore-container .load-more-button.loading .arrow_down:before {
-  -webkit-animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+.loadmore-container .load-more-button.loading .arrow_down:after {
+  height: 130%;
+  -webkit-animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
   /* Safari 4+ */
-  -moz-animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+  -moz-animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
   /* Fx 5+ */
-  -o-animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+  -o-animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
   /* Opera 12+ */
-  animation: elasticus 1.2s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
+  animation: elasticus 1.5s cubic-bezier(1, 0, 0, 1) 0.5s infinite;
 }
 .loadmore-container .no-more {
   font-family: "Cormorant Garamond", serif;
@@ -2788,7 +2796,7 @@ header.site-header {
 @media (max-width: 750px) {
   .single.single-post article.single {
     padding: 40px 3%;
-    width: 96%;
+    width: 100%;
   }
 }
 .single.single-post article.single .post-thumbnail-singular {
@@ -2864,6 +2872,9 @@ header.site-header {
   margin: 0 0 20px 0;
   padding: 0 0 30px 0;
   border-bottom: 1px solid #000000;
+}
+.single.single-post article.single .entry-content h1 {
+  line-height: auto;
 }
 .single.single-post article.single .entry-content p.has-drop-cap:first-letter {
   float: left;
@@ -3028,6 +3039,7 @@ body.archive .higlights .one .post .entry-meta .meta-container p {
 }
 body.archive .higlights .one .post .entry-meta .meta-container a.read-more-wrapper {
   float: right;
+  overflow: hidden;
 }
 body.archive .higlights .four {
   width: 31.667%;
