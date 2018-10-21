@@ -10,8 +10,14 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	<header class="page-header">
+		<div class="page_title_container">
+			<h1 class="page-title"><?php the_title( ); ?></h1>					
+			<div class="black_line_container">
+				<div class="black_line"></div>
+			</div>
+		</div>
+		
 	</header><!-- .entry-header -->
 
 	<?php elizabethcoop_post_thumbnail(); ?>

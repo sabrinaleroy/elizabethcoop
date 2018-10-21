@@ -1,0 +1,34 @@
+.entry-content{
+	.wp-block-columns.has-2-columns{
+		display: table;
+		.wp-block-column:last-child {
+			width: 50%;
+			display: table-cell;
+			vertical-align: middle;
+		    padding: 0  0 0 10px;
+		}
+		.wp-block-column:first-child {
+			width: 50%;
+		    padding: 0 10px 0 0;
+		    display: table-cell;
+			vertical-align: middle;
+		}
+		@media screen and (max-width: 750px) {
+			display: block;
+			.wp-block-column:last-child,
+			.wp-block-column:first-child {
+				width: 100%;
+			    padding:  0;
+			    display: block;
+			}
+		}
+
+	}
+	blockquote{
+		margin: 1.5em 0 ;
+		padding: 0 0 0 20px;
+		border-left: 6px solid $color__text-screen;
+		font-size: 32px;
+		line-height: normal;
+	}
+}

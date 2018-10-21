@@ -1581,6 +1581,52 @@ table {
   display: block;
 }
 
+body.archive .page-header,
+body.page .page-header {
+  margin: 0 0 40px 0;
+  position: relative;
+  margin: 80px 0 30px 0;
+}
+body.archive .page-header .page_title_container,
+body.page .page-header .page_title_container {
+  display: table;
+  width: 100%;
+}
+body.archive .page-header .page_title_container h1,
+body.page .page-header .page_title_container h1 {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: "Lato", sans-serif;
+  font-size: 27px;
+  line-height: 29px;
+  padding: 0 30px 0 0;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: table-cell;
+  vertical-align: middle;
+}
+body.archive .page-header .page_title_container .black_line_container,
+body.page .page-header .page_title_container .black_line_container {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 29px;
+}
+body.archive .page-header .page_title_container .black_line_container .black_line,
+body.page .page-header .page_title_container .black_line_container .black_line {
+  height: 6px;
+  width: 100%;
+  background-color: #000000;
+}
+body.archive .page-header .archive-description,
+body.page .page-header .archive-description {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -2783,6 +2829,16 @@ header.site-header {
   margin: 0 0 1.5em;
 }
 
+body.page .entry-content {
+  font-family: "Lato",sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  font-weight: 300;
+  line-height: 23px;
+  margin: 0 0 20px 0;
+  padding: 0 0 30px 0;
+}
+
 /*--------------------------------------------------------------
 ## Posts 
 --------------------------------------------------------------*/
@@ -3239,6 +3295,43 @@ body.archive .navigation.posts-navigation {
 
 .bypostauthor {
   display: block;
+}
+
+/*--------------------------------------------------------------
+## gutenberg
+--------------------------------------------------------------*/
+.entry-content .wp-block-columns.has-2-columns {
+  display: table;
+}
+.entry-content .wp-block-columns.has-2-columns .wp-block-column:last-child {
+  width: 50%;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0  0 0 10px;
+}
+.entry-content .wp-block-columns.has-2-columns .wp-block-column:first-child {
+  width: 50%;
+  padding: 0 10px 0 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+@media screen and (max-width: 750px) {
+  .entry-content .wp-block-columns.has-2-columns {
+    display: block;
+  }
+  .entry-content .wp-block-columns.has-2-columns .wp-block-column:last-child,
+  .entry-content .wp-block-columns.has-2-columns .wp-block-column:first-child {
+    width: 100%;
+    padding: 0;
+    display: block;
+  }
+}
+.entry-content blockquote {
+  margin: 1.5em 0;
+  padding: 0 0 0 20px;
+  border-left: 6px solid #000000;
+  font-size: 32px;
+  line-height: normal;
 }
 
 /*--------------------------------------------------------------
