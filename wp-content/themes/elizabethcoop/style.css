@@ -3333,6 +3333,48 @@ body.archive .navigation.posts-navigation {
   font-size: 32px;
   line-height: normal;
 }
+.entry-content .wpcf7 {
+  max-width: 550px;
+  margin: 0 auto;
+  background-color: #fbeadd;
+  padding: 40px;
+  text-align: center;
+}
+.entry-content .wpcf7 label {
+  font-weight: 700;
+  width: 100%;
+  display: block;
+}
+.entry-content .wpcf7 span.wpcf7-form-control-wrap your-name {
+  width: 100%;
+  display: block;
+}
+.entry-content .wpcf7 textarea,
+.entry-content .wpcf7 input {
+  background-color: #fffcf9;
+  border: 1px solid #cfcfcf;
+  padding: 7px;
+  margin: 5px;
+  width: 100%;
+}
+.entry-content .wpcf7 input.wpcf7-submit {
+  max-width: 250px;
+  color: #ffffff;
+  background-color: #000000;
+  border: 1px solid #000000;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.entry-content .wpcf7 input.wpcf7-submit:hover {
+  background-color: #fbeadd;
+  color: #000000;
+}
+.entry-content .wpcf7 div.wpcf7-validation-errors, .entry-content .wpcf7 div.wpcf7-acceptance-missing {
+  border: 2px solid #f00;
+}
 
 /*--------------------------------------------------------------
 ## footer

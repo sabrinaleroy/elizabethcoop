@@ -31,4 +31,46 @@
 		font-size: 32px;
 		line-height: normal;
 	}
+	.wpcf7{
+		max-width: 550px;
+		margin: 0 auto;
+		background-color: $color__background-headerhome; 
+		padding: 40px;
+		text-align: center;
+		label{
+			font-weight: 700;
+			width: 100%;
+			display: block;
+		}
+		span.wpcf7-form-control-wrap your-name{
+			width: 100%;
+			display: block;
+		}
+		textarea,
+		input{
+			background-color: #fffcf9;
+			border: 1px solid #cfcfcf; 
+			padding: 7px;
+			margin: 5px;
+			width: 100%;
+		}
+		input.wpcf7-submit{
+			max-width: 250px;
+			color: $color__background-body;
+			background-color:  $color__text-screen;
+			border:  1px solid $color__text-screen;
+		    font-size: 17px;
+			font-weight: 700;
+			font-family : $font__sitetitle;
+			text-transform: uppercase;
+			cursor: pointer;
+			&:hover{
+				background-color:  $color__background-headerhome;
+				color: $color__text-screen; 
+			}
+		}
+		div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
+		    border: 2px solid #f00;
+		}
+	}
 }
