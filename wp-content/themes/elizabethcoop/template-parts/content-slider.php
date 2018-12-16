@@ -16,7 +16,7 @@
 		</div>
 		<div class="meta-container">
 		
-			<?php the_title_max_charlength(44, '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
+			<?php the_title_max_charlength(60, '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
 			<p><?php the_excerpt_max_charlength(170); ?></p>
 			
 		</div>

@@ -329,27 +329,14 @@
 				
 				.entry-meta{
 					.thumbnail-container{
-						width: 30%;
-					    float: left;
-					    overflow: hidden;
-					    margin: 0 2% 0 0;
-					    img{
-						    height: 180px;
-							max-width: none;
-						    width: auto;
-						    position: relative;
-						    left: -34%;
-					    }
+						text-align: center;
 					}
 					
 					.meta-container{
-						width: 68%;
-					    margin: 0 auto;
+						margin: 0 auto;
 					    position: initial;
-					    top: auto;
 					    background-color: #ffffff;
 					    padding: 0 12px;
-					    float: left;
 					    .entry-title{
 							font-size: 22px;
 							line-height: 25px;
@@ -375,23 +362,14 @@
 				
 				.entry-meta{
 					.thumbnail-container{
-						width: 38%;
-					    img{
-						    height: 160px;
-							max-width: none;
-						    width: auto;
-					    }
+						
 					}
 					
 					.meta-container{
-						width: 60%;
 					    .entry-title{
 							margin: 15px 0;
 							font-size: 18px;
 							line-height: normal;
-						}
-						p{
-							display: none;
 						}
 					}
 					    					
