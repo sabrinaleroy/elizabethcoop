@@ -675,7 +675,6 @@ table {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 30px;
   display: inline-block;
-  width: 60%;
   position: absolute;
   top: 16%;
   left: 25px;
@@ -1518,12 +1517,14 @@ table {
     margin: 0 auto;
     position: initial;
     background-color: #ffffff;
-    padding: 0 12px;
+    padding: 10px 0;
+    width: 100%;
   }
   .grid-list.grid-2 .post .entry-meta .meta-container .entry-title, .grid-list.grid-3 .post .entry-meta .meta-container .entry-title {
     font-size: 22px;
     line-height: 25px;
     min-height: 0px;
+    font-weight: 600;
   }
   .grid-list.grid-2 .post .entry-meta .meta-container p, .grid-list.grid-3 .post .entry-meta .meta-container p {
     display: block;
