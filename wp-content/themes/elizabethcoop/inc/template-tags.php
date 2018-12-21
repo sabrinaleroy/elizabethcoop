@@ -105,7 +105,7 @@ if ( ! function_exists( 'elizabethcoop_post_thumbnail' ) ) :
 		<?php elseif($size=="four") : 
 			$background = "";
 			if(has_post_thumbnail()){
-				$background = 'style="background-image:url('.get_the_post_thumbnail_url(get_the_ID(),"thumbnail").');"';
+				$background = 'style="background-image:url('.get_the_post_thumbnail_url(get_the_ID(),"medium").');"';
 			}
 			
 			?>

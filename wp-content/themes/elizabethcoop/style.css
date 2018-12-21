@@ -3212,31 +3212,31 @@ body.archive .higlights .four .post .entry-meta .meta-container .read-more-wrapp
     padding: 0 0 20px 0;
   }
   body.archive .higlights .four .post .entry-meta .thumbnail-container {
-    height: 180px;
-    width: 30%;
-    float: left;
-    overflow: hidden;
+    height: auto;
+    width: 100%;
+    float: none;
+    overflow: visible;
     margin: 0 2% 0 0;
   }
   body.archive .higlights .four .post .entry-meta .thumbnail-container .post-thumbnail-four {
     background-image: url(images/placeholder-thumbnail.jpg);
-    height: 180px;
+    height: 200px;
   }
   body.archive .higlights .four .post .entry-meta .thumbnail-container img {
-    height: 180px;
+    height: 200px;
     max-width: none;
     width: auto;
     position: relative;
     left: -34%;
   }
   body.archive .higlights .four .post .entry-meta .meta-container {
-    width: 68%;
+    width: 100%;
     margin: 0 auto;
     position: initial;
     top: auto;
     background-color: #ffffff;
-    padding: 0 12px;
-    float: left;
+    padding: 10px 0;
+    float: none;
   }
   body.archive .higlights .four .post .entry-meta .meta-container .entry-title {
     font-size: 22px;

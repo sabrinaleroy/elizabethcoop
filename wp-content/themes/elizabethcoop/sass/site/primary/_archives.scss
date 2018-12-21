@@ -269,17 +269,17 @@ body.archive{
 					
 					.entry-meta{
 						.thumbnail-container{
-							height: 180px;
-							width: 30%;
-						    float: left;
-						    overflow: hidden;
-						    margin: 0 2% 0 0;
+							    height: auto;
+							    width: 100%;
+							    float: none;
+							    overflow: visible;
+							    margin: 0 2% 0 0;
 						    .post-thumbnail-four {
 							    background-image: url(images/placeholder-thumbnail.jpg);
-							    height: 180px;
+							    height: 200px;
 							}
 						    img{
-							    height: 180px;
+							    height: 200px;
 								max-width: none;
 							    width: auto;
 							    position: relative;
@@ -288,13 +288,13 @@ body.archive{
 						}
 						
 						.meta-container{
-							width: 68%;
+							width: 100%;
 						    margin: 0 auto;
 						    position: initial;
 						    top: auto;
 						    background-color: #ffffff;
-						    padding: 0 12px;
-						    float: left;
+						    padding: 10px 0;
+						    float: none;
 						    .entry-title{
 								font-size: 22px;
 								line-height: 25px;
