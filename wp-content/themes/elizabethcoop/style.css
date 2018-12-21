@@ -3220,10 +3220,10 @@ body.archive .higlights .four .post .entry-meta .meta-container .read-more-wrapp
   }
   body.archive .higlights .four .post .entry-meta .thumbnail-container .post-thumbnail-four {
     background-image: url(images/placeholder-thumbnail.jpg);
-    height: 200px;
+    height: 270px;
   }
   body.archive .higlights .four .post .entry-meta .thumbnail-container img {
-    height: 200px;
+    height: 270px;
     max-width: none;
     width: auto;
     position: relative;
